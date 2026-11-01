@@ -77,6 +77,32 @@ h1.wordmark .line2{display:block;font-weight:500;letter-spacing:.02em;color:tran
 .stage canvas{position:absolute;inset:0;width:100%;height:100%}
 .stage .tag{position:absolute;left:16px;top:14px;font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;color:var(--gold);padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:rgba(10,9,7,.7)}
 
+/* ---------- 추천 테마 · 키워드 (정사각형 카드) ---------- */
+.rec{margin:0 0 22px}
+.rec-head{display:flex;align-items:baseline;gap:10px;margin:0 0 12px}
+.rec-head small{font-family:var(--font-mono);font-size:11px;letter-spacing:.2em;color:var(--gold)}
+.rec-head strong{font-size:16px;font-weight:700}
+.rec-head span{margin-left:auto;font-size:12.5px;color:var(--muted)}
+.themes{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:12px}
+.th{all:unset;box-sizing:border-box;position:relative;cursor:pointer;aspect-ratio:1/1;min-width:0;display:flex;flex-direction:column;justify-content:space-between;padding:12px 12px 11px;border-radius:22px;overflow:hidden;isolation:isolate;border:1px solid var(--line-soft);background:linear-gradient(155deg,color-mix(in srgb,var(--c1) 46%,var(--panel)),color-mix(in srgb,var(--c2) 30%,var(--ink-2)) 78%);transition:transform .25s var(--ease),border-color .25s,box-shadow .25s}
+.th::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(120% 90% at 85% 100%,color-mix(in srgb,var(--c1) 55%,transparent),transparent 62%),linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px) 0 0/16px 16px,linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px) 0 0/16px 16px}
+.th:hover{transform:translateY(-4px);border-color:rgba(245,185,11,.5);box-shadow:0 22px 40px -26px #000,0 0 36px -14px var(--c1)}
+.th[aria-pressed="true"]{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold),0 0 40px -12px var(--glow)}
+.th:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:22px}
+.th .tk{font-family:var(--font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(244,238,221,.72)}
+.th b{display:block;margin-top:3px;font-size:clamp(15px,1.5vw,18px);font-weight:700;line-height:1.2;color:#fff;text-shadow:0 1px 10px rgba(0,0,0,.45);overflow-wrap:anywhere}
+.th .tn{white-space:nowrap;display:inline-flex;align-self:flex-start;align-items:center;height:22px;padding:0 9px;border-radius:999px;background:rgba(10,9,7,.55);border:1px solid rgba(244,238,221,.16);font-family:var(--font-mono);font-size:11px;color:var(--text)}
+.th .art{position:absolute;right:8px;bottom:10px;display:flex;align-items:flex-end;gap:0;pointer-events:none}
+.th .art canvas{display:block;height:34px!important;width:auto!important;margin-left:-6px;filter:drop-shadow(0 4px 6px rgba(0,0,0,.45))}
+.th .art .mus{display:flex;align-items:flex-end;gap:3px;height:34px;margin:0 8px 2px 0}
+.th .art .mus i{width:5px;border-radius:2px;background:var(--gold);opacity:.85;height:40%}
+.th .art .mus i:nth-child(2){height:90%}.th .art .mus i:nth-child(3){height:60%}.th .art .mus i:nth-child(4){height:100%}.th .art .mus i:nth-child(5){height:45%}
+/* 더보기 · NEW */
+.morebox{display:flex;flex-direction:column;align-items:center;gap:8px;margin-top:26px}
+.morebox .btn i{font-style:normal;font-family:var(--font-mono);font-size:12px;opacity:.75}
+.morebox small{font-family:var(--font-mono);font-size:11.5px;color:var(--muted);letter-spacing:.06em}
+.newb{position:absolute;right:12px;top:12px;display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:999px;background:var(--gold);color:#1a1405;font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:.12em;box-shadow:0 4px 14px -4px var(--glow)}
+
 /* ---------- 목록 ---------- */
 .store{padding-block:12px 110px}
 .sec-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 24px;margin-bottom:22px}
@@ -217,12 +243,19 @@ footer .wrap{padding-block:36px calc(32px + env(safe-area-inset-bottom,0px));dis
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:80;transform:translate(-50%,16px);opacity:0;pointer-events:none;padding:11px 18px;border-radius:999px;background:rgba(31,26,14,.96);border:1px solid var(--line);color:var(--text);font-size:14px;box-shadow:0 16px 40px rgba(0,0,0,.5);transition:opacity .25s,transform .25s var(--ease);max-width:calc(100vw - 32px);text-align:center}
 .toast.on{opacity:1;transform:translate(-50%,0)}
 
+@media (max-width:1000px){
+  .themes{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
 @media (max-width:900px){
   .hero .wrap{grid-template-columns:minmax(0,1fr);padding-block:40px 48px;gap:28px}
   .stage{max-width:560px;width:100%;justify-self:center}
   .dgrid{grid-template-columns:minmax(0,1fr)}
 }
 @media (max-width:640px){
+  .themes{display:flex;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none;margin-inline:-16px;padding:2px 16px 8px}
+  .themes::-webkit-scrollbar{display:none}
+  .th{flex:none;width:136px;scroll-snap-align:start}
+  .rec-head span{display:none}
   .nav{display:none}
   .top .wrap{height:54px}
   .bar{position:static;padding-top:4px}
@@ -280,6 +313,10 @@ footer .wrap{padding-block:36px calc(32px + env(safe-area-inset-bottom,0px));dis
         <h2><small>ASSETS</small>에셋 둘러보기</h2>
         <p>카드를 누르면 크게 보고 들을 수 있어요</p>
       </div>
+      <div class="rec" id="rec" hidden>
+        <div class="rec-head"><small>RECOMMENDED</small><strong>추천 테마 · 키워드</strong><span>누르면 그 키워드의 에셋만 모아 봐요</span></div>
+        <div class="themes" id="themes" role="group" aria-label="추천 테마"></div>
+      </div>
       <div class="bar">
         <div class="seg" role="group" aria-label="종류">
           <button type="button" data-k="all" aria-pressed="true">전체 <i id="nAll"></i></button>
@@ -294,6 +331,7 @@ footer .wrap{padding-block:36px calc(32px + env(safe-area-inset-bottom,0px));dis
       </div>
       <p class="count" id="count" aria-live="polite"></p>
       <div class="grid" id="grid"></div>
+      <div class="morebox" id="moreBox" hidden><button type="button" class="btn ghost" id="more">더보기 <i id="moreN"></i></button><small id="moreS"></small></div>
       <p class="license" id="license"></p>
     </div>
   </section>
@@ -443,17 +481,18 @@ audio.addEventListener('timeupdate',function(){waves();syncBtns()});
 
 /* ---------- 엔진 연결 ----------
    Thaniya Engine이 이 페이지를 새 창(window.open)이나 iframe으로 열면 「불러오기」가 생깁니다.
-   스토어 → 엔진: {type:"thaniya-store:hello"} · {type:"thaniya-store:asset", asset:{엔진 에셋 모양}}
-   엔진 → 스토어: {type:"thaniya-engine:hello"} (연결 표시) · {type:"thaniya-engine:ack", id} (받았음) */
+   스토어 → 엔진: {type:"thaniya-store:hello"} · {type:"thaniya-store:asset", rid, asset:{엔진 에셋 모양}}
+   엔진 → 스토어: {type:"thaniya-engine:hello"} (연결 표시) · {type:"thaniya-engine:ack", id, rid, msg} (받았음)
+   같은 에셋을 여러 번 불러와도 되며, rid로 요청마다 따로 확인합니다. */
 var ENGINE=null;try{ENGINE=window.opener&&!window.opener.closed?window.opener:(window.parent!==window?window.parent:null)}catch(e){}
 if(/[?&]engine=1/.test(location.search)&&!ENGINE)ENGINE=window.opener||null;
-var linked=false,waitAck={};
+var linked=false,waitAck={},rseq=0;
 function post(msg){try{ENGINE.postMessage(msg,'*')}catch(e){}}
 if(ENGINE)post({type:'thaniya-store:hello',version:1});
 addEventListener('message',function(e){
   var d=e.data;if(!d||typeof d!=='object')return;
   if(d.type==='thaniya-engine:hello'){linked=true;$('#link').hidden=false;$$('[data-eng]').forEach(function(b){b.hidden=false})}
-  if(d.type==='thaniya-engine:ack'&&waitAck[d.id]){clearTimeout(waitAck[d.id]);delete waitAck[d.id];toast(d.msg||'엔진 프로젝트에 넣었어요')}
+  if(d.type==='thaniya-engine:ack'){var wk=d.rid||d.id;if(waitAck[wk]){clearTimeout(waitAck[wk]);delete waitAck[wk];toast(d.msg||'엔진 프로젝트에 넣었어요')}}
 });
 function engineAsset(it){
   var a={id:it.id,name:it.name,kind:it.kind,cat:it.cat,group:it.kind==='audio'?'오디오':it.group,src:it.src};
@@ -465,8 +504,8 @@ function toData(src){if(/^data:/.test(src))return Promise.resolve(src);
   return fetch(src).then(function(r){return r.blob()}).then(function(b){return new Promise(function(ok){var fr=new FileReader();fr.onload=function(){ok(fr.result)};fr.readAsDataURL(b)})})}
 function sendEngine(it){
   if(!ENGINE)return;
-  toData(it.src).then(function(src){var a=engineAsset(it);a.src=src;post({type:'thaniya-store:asset',version:1,asset:a});
-    waitAck[it.id]=setTimeout(function(){delete waitAck[it.id];toast('엔진으로 보냈어요 · 들어가지 않았다면 받은 파일을 프로젝트 창의 가져오기로 넣어 주세요')},120000)});
+  toData(it.src).then(function(src){var a=engineAsset(it);a.src=src;var rid=it.id+'#'+(++rseq);post({type:'thaniya-store:asset',version:1,rid:rid,asset:a});
+    waitAck[rid]=setTimeout(function(){delete waitAck[rid];toast('엔진으로 보냈어요 · 들어가지 않았다면 받은 파일을 프로젝트 창의 가져오기로 넣어 주세요')},120000)});
 }
 function download(it){
   toData(it.src).then(function(src){var a=document.createElement('a');a.href=src;a.download=it.file||((it.en||it.id).replace(/\W+/g,'_')+(it.kind==='audio'?'.mp3':'.png'));document.body.appendChild(a);a.click();a.remove();toast(it.name+' · 받기를 시작했어요')});
@@ -474,7 +513,12 @@ function download(it){
 
 /* ---------- 목록 ---------- */
 var byId={};ITEMS.forEach(function(it){byId[it.id]=it});
-var state={k:'all',q:'',tag:null};
+var PAGE=20;
+var state={k:'all',q:'',tag:null,n:PAGE,shown:0};
+/* 새로 나온 순: 항목에 \"added\":\"2026-11-01\" 처럼 날짜를 적으면 그 날짜 기준, 없으면 목록에서 뒤에 있을수록 새 에셋으로 봐요 */
+ITEMS.forEach(function(i,n){i._i=n});
+function newer(a,b){var x=a.added||'',y=b.added||'';return x!==y?(y>x?1:-1):b._i-a._i}
+var NEWEST=ITEMS.slice().sort(newer),NEWSET={};NEWEST.slice(0,PAGE).forEach(function(i){NEWSET[i.id]=1});
 var nT=ITEMS.filter(function(i){return catOf(i)==='tile'}).length,nO=ITEMS.filter(function(i){return catOf(i)==='object'}).length,nA=ITEMS.length-nT-nO;
 $('#nAll').textContent=ITEMS.length;$('#nTile').textContent=nT;$('#nObj').textContent=nO;$('#nAud').textContent=nA;
 var nFrames=ITEMS.reduce(function(s,i){return s+(i.slices?i.slices.length:0)},0);
@@ -492,33 +536,85 @@ function match(it){
 }
 function cardSpr(it){
   var a=it.anims&&it.anims.length,fr=a?it.anims[0].frames.length:it.slices.length;
-  return'<article class="card" data-id="'+it.id+'"><div class="pv"><canvas class="pix" data-spr="'+it.id+'"></canvas><span class="kind">'+IC.spr+KIND[it.cat]+'</span></div>'+
+  return'<article class="card" data-id="'+it.id+'"><div class="pv"><canvas class="pix" data-spr="'+it.id+'"></canvas><span class="kind">'+IC.spr+KIND[it.cat]+'</span>'+(NEWSET[it.id]?'<span class="newb">NEW</span>':'')+'</div>'+
     '<div class="body"><h3><span>'+esc(it.name)+'</span><button type="button" class="dl" data-dl="'+it.id+'" aria-label="'+esc(it.name)+' PNG 받기" title="PNG 받기">'+IC.dl+'</button></h3>'+
     '<span class="en">'+esc(it.en)+'</span><p class="meta"><span>'+it.tw+'×'+it.th+'</span><span>'+(a?'애니메이션 '+fr+'프레임':'조각 '+it.slices.length+'개')+'</span><span>PNG</span></p>'+
     '<div class="tags">'+it.tags.map(function(t){return'<span>#'+esc(t)+'</span>'}).join('')+'</div></div>'+
     '<button type="button" class="open" data-open="'+it.id+'" aria-label="'+esc(it.name)+' 자세히 보기"></button></article>';
 }
 function cardAud(it){
-  return'<article class="card" data-id="'+it.id+'"><div class="pv music"><canvas class="wave" data-wave="'+it.id+'" aria-hidden="true"></canvas><button type="button" class="play" data-play="'+it.id+'" aria-label="듣기: '+esc(it.name)+'">'+IC.play+'</button><span class="kind">'+IC.aud+'Music</span><span class="time" data-time="'+it.id+'">'+fmtT(it.dur)+'</span></div>'+
+  return'<article class="card" data-id="'+it.id+'"><div class="pv music"><canvas class="wave" data-wave="'+it.id+'" aria-hidden="true"></canvas><button type="button" class="play" data-play="'+it.id+'" aria-label="듣기: '+esc(it.name)+'">'+IC.play+'</button><span class="kind">'+IC.aud+'Music</span>'+(NEWSET[it.id]?'<span class="newb">NEW</span>':'')+'<span class="time" data-time="'+it.id+'">'+fmtT(it.dur)+'</span></div>'+
     '<div class="body"><h3><span>'+esc(it.name)+'</span><button type="button" class="dl" data-dl="'+it.id+'" aria-label="'+esc(it.name)+' MP3 받기" title="MP3 받기">'+IC.dl+'</button></h3>'+
     '<span class="en">'+esc(it.en)+'</span><p class="meta"><span>'+it.bpm+' BPM</span><span>'+esc(it.key)+'</span><span>'+esc(it.beat)+'</span><span>반복 재생</span></p>'+
     '<div class="tags">'+it.tags.map(function(t){return'<span>#'+esc(t)+'</span>'}).join('')+'</div></div>'+
     '<button type="button" class="open" data-open="'+it.id+'" aria-label="'+esc(it.name)+' 자세히 보기"></button></article>';
 }
-function render(){
-  renderChips();
-  var list=ITEMS.filter(match);
-  $('#count').textContent=list.length+'개의 에셋';
-  $('#grid').innerHTML=list.length?list.map(function(it){return it.kind==='audio'?cardAud(it):cardSpr(it)}).join(''):'<div class="empty"><strong>찾는 에셋이 없어요</strong>다른 이름이나 태그로 찾아보세요.</div>';
-  $$('#grid canvas[data-spr]').forEach(function(cv){var it=byId[cv.dataset.spr];animate(cv,it,function(s){var box=Math.min(150,Math.max(96,cv.parentNode.clientWidth*.5));return Math.max(1,Math.floor(box/Math.max(s.w,s.h)))});if(io)io.observe(cv)});
-  $$('#grid canvas[data-wave]').forEach(function(cv){var it=byId[cv.dataset.wave];drawWave(cv,it,cur===it?0:null);peaks(it,0,function(){waves()})});
+function cardOf(it){return it.kind==='audio'?cardAud(it):cardSpr(it)}
+function bindCards(){
+  $$('#grid canvas[data-spr]:not([data-b])').forEach(function(cv){cv.dataset.b='1';var it=byId[cv.dataset.spr];animate(cv,it,function(s){var box=Math.min(150,Math.max(96,cv.parentNode.clientWidth*.5));return Math.max(1,Math.floor(box/Math.max(s.w,s.h)))});if(io)io.observe(cv)});
+  $$('#grid canvas[data-wave]:not([data-b])').forEach(function(cv){cv.dataset.b='1';var it=byId[cv.dataset.wave];drawWave(cv,it,cur===it?0:null);peaks(it,0,function(){waves()})});
   syncBtns();
 }
-function setKind(k){state.k=k;$$('.seg button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.k===k)});render()}
+/* append=true 이면 이미 보이는 카드는 그대로 두고 새로 나올 카드만 뒤에 붙임 (더보기) */
+function render(append){
+  renderChips();renderThemes();
+  var list=ITEMS.filter(match).sort(newer),total=list.length,shown=Math.min(state.n,total),g=$('#grid');
+  if(append&&state.shown>0&&state.shown<=shown){g.insertAdjacentHTML('beforeend',list.slice(state.shown,shown).map(cardOf).join(''))}
+  else{g.innerHTML=total?list.slice(0,shown).map(cardOf).join(''):'<div class="empty"><strong>찾는 에셋이 없어요</strong>다른 이름이나 태그로 찾아보세요.</div>'}
+  state.shown=total?shown:0;
+  $('#count').textContent=total+'개의 에셋 · 새로 나온 순'+(shown<total?' · '+shown+'개 보는 중':'');
+  var left=total-shown,mb=$('#moreBox');mb.hidden=left<=0;
+  if(left>0){$('#moreN').textContent='('+Math.min(PAGE,left)+'개 더)';$('#moreS').textContent='남은 에셋 '+left+'개'}
+  bindCards();
+}
+/* ---------- 추천 테마 · 키워드: 정사각형 카드 (눌러서 그 키워드만 모아 보기) ---------- */
+var THEMES=[
+  {tag:'크리스마스',title:'크리스마스',en:'Christmas',c1:'#c0392b',c2:'#1f7a46'},
+  {tag:'할로윈',title:'할로윈',en:'Halloween',c1:'#e8741a',c2:'#5b2d91'},
+  {tag:'겨울',title:'겨울',en:'Winter',c1:'#4aa3e0',c2:'#2b4a8a'},
+  {tag:'던전',title:'던전',en:'Dungeon',c1:'#7a5c3a',c2:'#3b2f5c'},
+  {tag:'연구소',title:'연구소',en:'Laboratory',c1:'#2fb6a3',c2:'#2a3f6e'},
+  {tag:'마을',title:'마을',en:'Village',c1:'#d9a441',c2:'#6b8f3a'},
+  {tag:'몬스터',title:'몬스터',en:'Monsters',c1:'#7ac943',c2:'#8a2f5a'},
+  {tag:'잔잔한',title:'잔잔한 음악',en:'Calm music',c1:'#5b7cdb',c2:'#3a2d6b'}
+];
+function themeItems(t){return NEWEST.filter(function(i){return i.tags.indexOf(t)>=0})}
+function buildThemes(){
+  var host=$('#themes'),html='';
+  THEMES.forEach(function(th){
+    var its=themeItems(th.tag);th.n=its.length;if(!its.length)return;
+    html+='<button type="button" class="th" data-th="'+esc(th.tag)+'" aria-pressed="false" style="--c1:'+th.c1+';--c2:'+th.c2+'" aria-label="'+esc(th.title)+' 키워드 · 에셋 '+its.length+'개">'+
+      '<span><span class="tk">'+esc(th.en)+'</span><b>'+esc(th.title)+'</b></span>'+
+      '<span class="art" data-art="'+esc(th.tag)+'"></span><span class="tn">'+its.length+'개</span></button>';
+  });
+  host.innerHTML=html;$('#rec').hidden=!html;
+  /* 그림: 그 키워드의 스프라이트 2~3개 (없으면 음악 막대) */
+  $$('#themes .art').forEach(function(box){
+    var its=themeItems(box.dataset.art).filter(function(i){return i.kind==='sprite'}).slice(0,2);
+    if(!its.length){box.innerHTML='<span class="mus"><i></i><i></i><i></i><i></i><i></i></span>';return}
+    its.reverse().forEach(function(it){
+      var cv=document.createElement('canvas');cv.className='pix';box.appendChild(cv);
+      var sl=it.slices[0],k=Math.max(1,Math.floor(44/Math.max(sl.w,sl.h)));
+      ready(img(it),function(){drawSlice(cv,it,sl,k)});
+    });
+  });
+}
+function renderThemes(){$$('#themes .th').forEach(function(b){b.setAttribute('aria-pressed',state.tag===b.dataset.th&&state.k==='all')})}
+$('#themes').addEventListener('click',function(e){
+  var b=e.target.closest('.th');if(!b)return;
+  var t=b.dataset.th,on=state.tag===t&&state.k==='all';
+  state.tag=on?null:t;state.k='all';state.q='';$('#q').value='';state.n=PAGE;
+  $$('.seg button').forEach(function(x){x.setAttribute('aria-pressed',x.dataset.k==='all')});
+  render();
+  if(!on)$('#count').scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});
+});
+buildThemes();
+$('#more').addEventListener('click',function(){state.n+=PAGE;render(true)});
+function setKind(k){state.k=k;state.n=PAGE;$$('.seg button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.k===k)});render()}
 $$('.seg button').forEach(function(b){b.addEventListener('click',function(){setKind(b.dataset.k)})});
 $$('a[data-k]').forEach(function(a){a.addEventListener('click',function(){setKind(a.dataset.k)})});
-$('#chips').addEventListener('click',function(e){var b=e.target.closest('.chip');if(!b)return;state.tag=b.dataset.tag||null;render()});
-var qt=0;$('#q').addEventListener('input',function(e){clearTimeout(qt);qt=setTimeout(function(){state.q=e.target.value;render()},120)});
+$('#chips').addEventListener('click',function(e){var b=e.target.closest('.chip');if(!b)return;state.tag=b.dataset.tag||null;state.n=PAGE;render()});
+var qt=0;$('#q').addEventListener('input',function(e){clearTimeout(qt);qt=setTimeout(function(){state.q=e.target.value;state.n=PAGE;render()},120)});
 $('#grid').addEventListener('click',function(e){
   var p=e.target.closest('[data-play]');if(p){playToggle(byId[p.dataset.play]);return}
   var d=e.target.closest('[data-dl]');if(d){download(byId[d.dataset.dl]);return}
