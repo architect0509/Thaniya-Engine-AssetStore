@@ -432,6 +432,7 @@ function syncBtns(){$$('.play[data-play]').forEach(function(b){var on=cur&&b.dat
   $$('[data-time]').forEach(function(el){var it=byId[el.dataset.time];el.innerHTML=cur===it?'<b>'+fmtT(audio.currentTime)+'</b> / '+fmtT(it.dur):fmtT(it.dur)})}
 function syncPill(){
   var b=$('#bgm');if(!b)return;var on=!audio.paused&&!audio.ended&&!!cur;
+  b.style.display=cur?'':'none';
   b.classList.toggle('on',on);b.setAttribute('aria-pressed',on);
   $('#bgmT').textContent=cur?cur.name:'배경 음악';
   $('#bgmS').textContent=on?'끄기':'소리 켜기';
@@ -622,28 +623,13 @@ var tt=0;function toast(m){var el=$('#toast');el.textContent=m;el.classList.add(
 addEventListener('resize',function(){players.forEach(draw);waves()});
 render();requestAnimationFrame(tick);
 
-/* ---------- 첫 화면 배경 음악 ----------
-   열자마자 재생을 시도해요. 브라우저가 소리 자동재생을 막으면(대부분 그래요) 화면을 처음 누르거나 키를 누르는 순간 이어서 틀어요.
-   다른 곡을 직접 고르면 그 곡이 우선이에요. 왼쪽 아래 알약으로 언제든 끄고 켤 수 있어요. */
-var BGM_ID='store_bgm_forest',bgmOff=false;
+/* ---------- 배경 음악 ----------
+   열어도 음악이 저절로 나오지 않아요. 곡을 직접 재생하면 왼쪽 아래 알약이 나타나 끄고 켤 수 있어요. */
 (function(){
-  var it=byId[BGM_ID]||ITEMS.filter(function(i){return i.kind==='audio'})[0];if(!it)return;
-  cur=it;audio.src=it.src;audio.loop=true;audio.volume=.7;syncPill();
-  var evs=['click','keydown','touchend'];
-  function arm(){evs.forEach(function(e){addEventListener(e,onGesture,true)})}
-  function disarm(){evs.forEach(function(e){removeEventListener(e,onGesture,true)})}
-  function onGesture(e){
-    if(e.type==='keydown'&&(e.key==='Tab'||e.key==='Shift'||e.key==='Control'||e.key==='Alt'||e.key==='Meta'))return;
-    if(e.target&&e.target.closest&&e.target.closest('#bgm'))return;
-    disarm();if(userPlayed||bgmOff||!audio.paused)return;
-    var p=audio.play();if(p&&p.catch)p.catch(function(){arm()});
-  }
-  var p=audio.play();
-  if(p&&p.then){p.catch(function(){arm()})}else arm();
+  audio.loop=true;audio.volume=.7;syncPill();
   $('#bgm').addEventListener('click',function(){
-    disarm();
-    if(!audio.paused){bgmOff=true;audio.pause();return}
-    bgmOff=false;if(!cur){cur=it;audio.src=it.src}
+    if(!cur)return;
+    if(!audio.paused){audio.pause();return}
     audio.play().catch(function(){toast('재생할 수 없어요. 브라우저의 소리 설정을 확인해 주세요.')});
   });
 })();
