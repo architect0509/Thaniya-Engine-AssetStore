@@ -466,7 +466,7 @@ function toData(src){if(/^data:/.test(src))return Promise.resolve(src);
 function sendEngine(it){
   if(!ENGINE)return;
   toData(it.src).then(function(src){var a=engineAsset(it);a.src=src;post({type:'thaniya-store:asset',version:1,asset:a});
-    waitAck[it.id]=setTimeout(function(){delete waitAck[it.id];toast('엔진으로 보냈어요 · 들어가지 않았다면 받은 파일을 프로젝트 창의 가져오기로 넣어 주세요')},1500)});
+    waitAck[it.id]=setTimeout(function(){delete waitAck[it.id];toast('엔진으로 보냈어요 · 들어가지 않았다면 받은 파일을 프로젝트 창의 가져오기로 넣어 주세요')},120000)});
 }
 function download(it){
   toData(it.src).then(function(src){var a=document.createElement('a');a.href=src;a.download=it.file||((it.en||it.id).replace(/\W+/g,'_')+(it.kind==='audio'?'.mp3':'.png'));document.body.appendChild(a);a.click();a.remove();toast(it.name+' · 받기를 시작했어요')});
