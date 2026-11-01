@@ -251,7 +251,7 @@ footer .wrap{padding-block:36px calc(32px + env(safe-area-inset-bottom,0px));dis
       <a href="#store" data-k="object">오브젝트</a>
       <a href="#store" data-k="audio">음악</a>
     </nav>
-    <span class="link" id="link" hidden title="Thaniya Engine에서 연 스토어예요. 「엔진에 넣기」로 프로젝트에 바로 넣을 수 있어요.">엔진과 연결됨</span>
+    <span class="link" id="link" hidden title="Thaniya Engine에서 연 스토어예요. 「불러오기」로 프로젝트에 바로 넣을 수 있어요.">엔진과 연결됨</span>
   </div>
 </header>
 
@@ -441,7 +441,7 @@ function syncPill(){
 audio.addEventListener('timeupdate',function(){waves();syncBtns()});
 
 /* ---------- 엔진 연결 ----------
-   Thaniya Engine이 이 페이지를 새 창(window.open)이나 iframe으로 열면 「엔진에 넣기」가 생깁니다.
+   Thaniya Engine이 이 페이지를 새 창(window.open)이나 iframe으로 열면 「불러오기」가 생깁니다.
    스토어 → 엔진: {type:"thaniya-store:hello"} · {type:"thaniya-store:asset", asset:{엔진 에셋 모양}}
    엔진 → 스토어: {type:"thaniya-engine:hello"} (연결 표시) · {type:"thaniya-engine:ack", id} (받았음) */
 var ENGINE=null;try{ENGINE=window.opener&&!window.opener.closed?window.opener:(window.parent!==window?window.parent:null)}catch(e){}
@@ -455,7 +455,7 @@ addEventListener('message',function(e){
   if(d.type==='thaniya-engine:ack'&&waitAck[d.id]){clearTimeout(waitAck[d.id]);delete waitAck[d.id];toast(d.msg||'엔진 프로젝트에 넣었어요')}
 });
 function engineAsset(it){
-  var a={id:it.id,name:it.name,kind:it.kind,group:it.kind==='audio'?'오디오':it.group,src:it.src};
+  var a={id:it.id,name:it.name,kind:it.kind,cat:it.cat,group:it.kind==='audio'?'오디오':it.group,src:it.src};
   if(it.kind==='sprite'){a.tw=it.tw;a.th=it.th;a.mode=it.mode;a.slices=it.slices;a.solid=[]}
   else{a.dur=it.dur;a.size=it.size;a.mime=it.mime}
   return a;
@@ -540,7 +540,7 @@ $('#dClose').addEventListener('click',closeDetail);$('#scrim').addEventListener(
 addEventListener('keydown',function(e){if($('#overlay').hidden)return;if(e.key==='Escape')closeDetail();
   if(e.key==='Tab'){var f=$$('#sheet button,#sheet input,#sheet a[href]').filter(function(x){return x.offsetParent});if(!f.length)return;var a=f[0],z=f[f.length-1];
     if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}});
-function engBtn(it){return'<button type="button" class="btn solid" data-eng="'+it.id+'"'+(linked||ENGINE?'':' hidden')+'>'+IC.eng+'엔진에 넣기</button>'}
+function engBtn(it){return'<button type="button" class="btn solid" data-eng="'+it.id+'"'+(linked||ENGINE?'':' hidden')+'>'+IC.eng+'불러오기</button>'}
 function detailSpr(it){
   var a=it.anims||[];
   return'<div class="dgrid"><div>'+
