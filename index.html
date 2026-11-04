@@ -270,6 +270,58 @@ footer .wrap{padding-block:36px calc(32px + env(safe-area-inset-bottom,0px));dis
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:80;transform:translate(-50%,16px);opacity:0;pointer-events:none;padding:11px 18px;border-radius:999px;background:rgba(31,26,14,.96);border:1px solid var(--line);color:var(--text);font-size:14px;box-shadow:0 16px 40px rgba(0,0,0,.5);transition:opacity .25s,transform .25s var(--ease);max-width:calc(100vw - 32px);text-align:center}
 .toast.on{opacity:1;transform:translate(-50%,0)}
 
+/* ---------- 즐겨찾기 · 불러온 기록 (내 보관함) ---------- */
+.ibs{display:inline-flex;align-items:center;gap:6px;flex:none}
+.fav{all:unset;position:relative;z-index:2;box-sizing:border-box;cursor:pointer;flex:none;width:34px;height:34px;display:grid;place-items:center;border-radius:50%;border:1px solid var(--line-soft);color:var(--muted);transition:background .2s,color .2s,border-color .2s,transform .2s}
+.fav:hover{color:var(--gold-hi);border-color:var(--line);background:rgba(245,185,11,.1);transform:translateY(-1px)}
+.fav:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.fav svg{width:16px;height:16px}
+.fav[aria-pressed="true"]{color:var(--gold);border-color:rgba(245,185,11,.55);background:rgba(245,185,11,.14)}
+.fav[aria-pressed="true"] svg{fill:currentColor}
+.fav.pill{width:auto;height:38px;padding:0 15px 0 12px;gap:7px;border-radius:999px;display:inline-flex;align-items:center;font-size:13.5px;font-weight:500;white-space:nowrap}
+.libbtn{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;gap:7px;height:34px;padding:0 12px 0 11px;border-radius:999px;border:1px solid var(--line);color:var(--gold);font-size:13.5px;font-weight:500;white-space:nowrap;flex:none;transition:background .2s}
+.libbtn:hover{background:rgba(245,185,11,.12)}
+.libbtn:focus-visible,.favf:focus-visible,.ib:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.libbtn svg{width:15px;height:15px}
+.libbtn i,.favf i{font-style:normal;font-family:var(--font-mono);font-size:11px;min-width:20px;height:20px;padding:0 6px;display:inline-grid;place-items:center;border-radius:999px;background:rgba(245,185,11,.18);color:var(--gold-hi)}
+.favf{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 14px 0 13px;border-radius:999px;border:1px solid var(--line-soft);background:rgba(244,238,221,.05);color:var(--muted);font-size:14px;font-weight:500;white-space:nowrap;transition:background .2s,color .2s,border-color .2s}
+.favf:hover{color:var(--text);border-color:var(--line)}
+.favf svg{width:15px;height:15px}
+.favf[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:#1a1405;font-weight:700}
+.favf[aria-pressed="true"] svg{fill:currentColor}
+.favf[aria-pressed="true"] i{background:rgba(26,20,5,.18);color:#1a1405}
+.btn.danger{border-color:rgba(240,110,90,.55);color:#ff9d8a}
+.btn.danger:hover{background:rgba(240,110,90,.14)}
+.btn.danger-fill{background:#e5533d;border-color:#e5533d;color:#fff}
+.btn.danger-fill:hover{background:#f0634d}
+.lib{max-width:720px}
+.lib-tabs{margin-bottom:12px}
+.lib-tabs .mini-seg button{height:34px;padding:0 14px;font-size:14px}
+.lib-tabs .mini-seg button i{font-style:normal;font-family:var(--font-mono);font-size:11px;opacity:.75}
+.lib-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin-bottom:12px;padding:8px 8px 8px 14px;border-radius:16px;background:rgba(244,238,221,.035);border:1px solid var(--line-soft)}
+.lib-bar label{display:inline-flex;align-items:center;gap:9px;font-size:13.5px;color:var(--muted);cursor:pointer;margin-right:auto}
+.lib input[type=checkbox]{accent-color:var(--gold);width:17px;height:17px;margin:0;cursor:pointer;flex:none}
+.lib-confirm{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;margin-bottom:12px;padding:12px 14px;border-radius:16px;border:1px solid rgba(240,110,90,.45);background:rgba(240,110,90,.08);font-size:14px;line-height:1.5}
+.lib-confirm p{margin:0;flex:1 1 240px}
+.lib-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.lib-list .row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:12px;padding:9px 10px 9px 14px;border-radius:18px;background:rgba(244,238,221,.035);border:1px solid var(--line-soft);transition:border-color .2s,background .2s}
+.lib-list .row.sel{border-color:rgba(245,185,11,.5);background:rgba(245,185,11,.06)}
+.lib-open{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;gap:12px;min-width:0;border-radius:12px}
+.lib-open:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.lib-th{width:54px;height:54px;flex:none;display:grid;place-items:center;border-radius:12px;background:#120f0a;border:1px solid var(--line-soft);overflow:hidden;color:var(--gold)}
+.lib-th canvas{display:block;max-width:48px;max-height:48px}
+.lib-th svg{width:22px;height:22px}
+.lib-tx{min-width:0;display:flex;flex-direction:column;gap:1px}
+.lib-tx b{font-size:15px;font-weight:700;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lib-tx span{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.02em;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lib-act{display:flex;align-items:center;gap:6px}
+.ib{all:unset;box-sizing:border-box;cursor:pointer;height:32px;padding:0 12px;border-radius:999px;border:1px solid var(--line);color:var(--gold);font-size:12.5px;font-weight:500;display:inline-flex;align-items:center;justify-content:center;gap:6px;white-space:nowrap;transition:background .2s,color .2s,border-color .2s}
+.ib:hover{background:rgba(245,185,11,.14)}
+.ib svg{width:14px;height:14px}
+.ib.del{width:32px;padding:0;border-color:var(--line-soft);color:var(--muted)}
+.ib.del:hover{color:#ff9d8a;border-color:rgba(240,110,90,.5);background:rgba(240,110,90,.1)}
+.lib-empty{padding:38px 20px;border:1.5px dashed rgba(244,238,221,.16);border-radius:20px;text-align:center;color:var(--muted);font-size:14px;line-height:1.6}
+.lib-empty strong{display:block;color:var(--text);font-size:16px;margin-bottom:4px}
 @media (max-width:900px){
   .hero .wrap{grid-template-columns:minmax(0,1fr);padding-block:40px 48px;gap:28px}
   .stage{max-width:560px;width:100%;justify-self:center}
@@ -298,6 +350,15 @@ footer .wrap{padding-block:36px calc(32px + env(safe-area-inset-bottom,0px));dis
   .fps{margin-left:0}
 }
 @media (max-width:380px){.grid{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:640px){
+  .libbtn{margin-left:auto}.libbtn .lb{display:none}.libbtn{padding:0 10px}
+  .favf .lb{display:none}.favf{padding:0 12px}
+  .body .ibs{gap:4px}.body .fav,.body .dl{width:30px;height:30px}
+  .fav.pill{width:38px;padding:0;justify-content:center}.fav.pill .lb{display:none}
+  .lib-list .row{grid-template-columns:auto minmax(0,1fr);gap:10px}
+  .lib-act{grid-column:2;justify-content:flex-end}
+  .lib-th{width:46px;height:46px}.lib-th canvas{max-width:40px;max-height:40px}
+}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 </style>
 </head>
@@ -310,6 +371,7 @@ footer .wrap{padding-block:36px calc(32px + env(safe-area-inset-bottom,0px));dis
       <a href="#store" data-k="object">오브젝트</a>
       <a href="#store" data-k="audio">음악</a>
     </nav>
+    <button type="button" class="libbtn" id="libBtn" aria-haspopup="dialog" aria-label="내 보관함 열기 (즐겨찾기 · 불러온 기록)" title="즐겨찾기 · 불러온 기록"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M8 1.9l1.85 3.9 4.25.55-3.1 2.95.78 4.2L8 11.4l-3.78 2.1.78-4.2L1.9 6.35l4.25-.55z"/></svg><span class="lb">보관함</span><i id="libN" hidden>0</i></button>
     <span class="link" id="link" hidden title="Thaniya Engine에서 연 스토어예요. 「불러오기」로 프로젝트에 바로 넣을 수 있어요.">엔진과 연결됨</span>
   </div>
 </header>
@@ -355,6 +417,7 @@ footer .wrap{padding-block:36px calc(32px + env(safe-area-inset-bottom,0px));dis
           <button type="button" data-k="object" aria-pressed="false">오브젝트 <i id="nObj"></i></button>
           <button type="button" data-k="audio" aria-pressed="false">음악 <i id="nAud"></i></button>
         </div>
+        <button type="button" class="favf" id="favF" aria-pressed="false" title="즐겨찾기한 에셋만 보기" aria-label="즐겨찾기만 보기"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M8 1.9l1.85 3.9 4.25.55-3.1 2.95.78 4.2L8 11.4l-3.78 2.1.78-4.2L1.9 6.35l4.25-.55z"/></svg><span class="lb">즐겨찾기</span><i id="nFav">0</i></button>
         <label class="search"><span class="sr">에셋 검색</span>
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="7" cy="7" r="4.6"/><path d="M10.4 10.4L14 14"/></svg>
           <input type="search" id="q" placeholder="이름이나 태그로 찾기 (예: 슬라임, 전투)" autocomplete="off"></label>
@@ -380,12 +443,37 @@ footer .wrap{padding-block:36px calc(32px + env(safe-area-inset-bottom,0px));dis
   </div>
 </footer>
 
+<div class="overlay" id="libOverlay" hidden>
+  <div class="scrim" id="libScrim"></div>
+  <section class="sheet lib" id="libSheet" role="dialog" aria-modal="true" aria-labelledby="libTitle">
+    <div class="sheet-head">
+      <div><h3 id="libTitle">내 보관함</h3><p class="sub" id="libSub"></p></div>
+      <button class="x" type="button" id="libClose" aria-label="닫기"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"/></svg></button>
+    </div>
+    <div class="lib-tabs"><div class="mini-seg" role="group" aria-label="보관함 종류">
+      <button type="button" id="libTabFav" aria-pressed="true">즐겨찾기 <i>0</i></button>
+      <button type="button" id="libTabHist" aria-pressed="false">불러온 기록 <i>0</i></button>
+    </div></div>
+    <div class="lib-bar">
+      <label><input type="checkbox" id="libAll">전체 선택</label>
+      <button type="button" class="btn ghost sm" id="libDelSel" disabled>선택 삭제<span id="libDelSelN"></span></button>
+      <button type="button" class="btn ghost sm danger" id="libDelAll">전체 삭제</button>
+    </div>
+    <div class="lib-confirm" id="libConfirm" role="alertdialog" aria-labelledby="libConfirmT" hidden>
+      <p id="libConfirmT"></p>
+      <button type="button" class="btn ghost sm" id="libConfirmNo">취소</button>
+      <button type="button" class="btn sm danger-fill" id="libConfirmYes">모두 삭제</button>
+    </div>
+    <ul class="lib-list" id="libList"></ul>
+  </section>
+</div>
 <div class="overlay" id="overlay" hidden>
   <div class="scrim" id="scrim"></div>
   <section class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="dTitle">
     <div class="sheet-head">
       <div><h3 id="dTitle"></h3><p class="sub" id="dSub"></p></div>
-      <button class="x" type="button" id="dClose" aria-label="닫기"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"/></svg></button>
+      <div class="ibs"><button type="button" class="fav pill" id="dFav" aria-pressed="false" aria-label="즐겨찾기에 담기" title="즐겨찾기"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M8 1.9l1.85 3.9 4.25.55-3.1 2.95.78 4.2L8 11.4l-3.78 2.1.78-4.2L1.9 6.35l4.25-.55z"/></svg><span class="lb">즐겨찾기</span></button>
+      <button class="x" type="button" id="dClose" aria-label="닫기"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"/></svg></button></div>
     </div>
     <div id="dBody"></div>
   </section>
@@ -607,7 +695,17 @@ footer .wrap{padding-block:36px calc(32px + env(safe-area-inset-bottom,0px));dis
 {"id":"store_rule_edge_dirt","name":"흙 경계 룰타일","en":"Dirt Edge (Rule Tile)","kind":"sprite","cat":"tile","group":"룰타일","sub":"룰타일","tags":["타일","룰타일","경계","바닥","자연"],"desc":"풀밭 위에 흙바닥을 덮어 깔 때 쓰는 경계 조각. 자갈이 섞인 거친 가장자리가 잔디와 자연스럽게 맞닿아요. 47장(8×6칸). 조각 이름의 N · E · S · W는 같은 타일이 이어진 방향(위 · 오른쪽 · 아래 · 왼쪽), +ne 같은 소문자는 대각 이웃이에요.","file":"rule_edge_dirt.png","w":256,"h":192,"tw":32,"th":32,"mode":"multiple","slices":[{"id":"m0","name":"흙 경계_고립","x":0,"y":0,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m1","name":"흙 경계_N","x":32,"y":0,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m2","name":"흙 경계_E","x":64,"y":0,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m3","name":"흙 경계_NE","x":96,"y":0,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m4","name":"흙 경계_S","x":128,"y":0,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m5","name":"흙 경계_NS","x":160,"y":0,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m6","name":"흙 경계_ES","x":192,"y":0,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m7","name":"흙 경계_NES","x":224,"y":0,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m8","name":"흙 경계_W","x":0,"y":32,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m9","name":"흙 경계_NW","x":32,"y":32,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m10","name":"흙 경계_EW","x":64,"y":32,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m11","name":"흙 경계_NEW","x":96,"y":32,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m12","name":"흙 경계_SW","x":128,"y":32,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m13","name":"흙 경계_NSW","x":160,"y":32,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m14","name":"흙 경계_ESW","x":192,"y":32,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m15","name":"흙 경계_NESW","x":224,"y":32,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m19","name":"흙 경계_NE+ne","x":0,"y":64,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m23","name":"흙 경계_NES+ne","x":32,"y":64,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m27","name":"흙 경계_NEW+ne","x":64,"y":64,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m31","name":"흙 경계_NESW+ne","x":96,"y":64,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m38","name":"흙 경계_ES+se","x":128,"y":64,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m39","name":"흙 경계_NES+se","x":160,"y":64,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m46","name":"흙 경계_ESW+se","x":192,"y":64,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m47","name":"흙 경계_NESW+se","x":224,"y":64,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m55","name":"흙 경계_NES+ne,se","x":0,"y":96,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m63","name":"흙 경계_NESW+ne,se","x":32,"y":96,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m76","name":"흙 경계_SW+sw","x":64,"y":96,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m77","name":"흙 경계_NSW+sw","x":96,"y":96,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m78","name":"흙 경계_ESW+sw","x":128,"y":96,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m79","name":"흙 경계_NESW+sw","x":160,"y":96,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m95","name":"흙 경계_NESW+ne,sw","x":192,"y":96,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m110","name":"흙 경계_ESW+se,sw","x":224,"y":96,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m111","name":"흙 경계_NESW+se,sw","x":0,"y":128,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m127","name":"흙 경계_NESW+ne,se,sw","x":32,"y":128,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m137","name":"흙 경계_NW+nw","x":64,"y":128,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m139","name":"흙 경계_NEW+nw","x":96,"y":128,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m141","name":"흙 경계_NSW+nw","x":128,"y":128,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m143","name":"흙 경계_NESW+nw","x":160,"y":128,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m155","name":"흙 경계_NEW+ne,nw","x":192,"y":128,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m159","name":"흙 경계_NESW+ne,nw","x":224,"y":128,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m175","name":"흙 경계_NESW+se,nw","x":0,"y":160,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m191","name":"흙 경계_NESW+ne,se,nw","x":32,"y":160,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m205","name":"흙 경계_NSW+sw,nw","x":64,"y":160,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m207","name":"흙 경계_NESW+sw,nw","x":96,"y":160,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m223","name":"흙 경계_NESW+ne,sw,nw","x":128,"y":160,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m239","name":"흙 경계_NESW+se,sw,nw","x":160,"y":160,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m255","name":"흙 경계_전체","x":192,"y":160,"w":32,"h":32,"px":0.5,"py":0.5}],"anims":[],"noMix":true,"rule":true,"src":"assets/sprites/rule_edge_dirt.png","added":"2026-11-04","under":"store_tile_grass","hint":"아래에 다른 바닥을 먼저 깔고 그 위에 이 룰타일을 덮어 깔아요. 이웃한 칸에 맞춰 47장 중 알맞은 조각을 고르면 가장자리가 끊김 없이 이어져요. 위 그림은 그 규칙대로 깐 예시예요. "},
 {"id":"store_rule_edge_sand","name":"모래 경계 룰타일","en":"Sand Edge (Rule Tile)","kind":"sprite","cat":"tile","group":"룰타일","sub":"룰타일","tags":["타일","룰타일","경계","바닥","해변","사막"],"desc":"풀밭이나 흙 위에 모래밭을 덮어 깔 때 쓰는 경계 조각. 잔물결 무늬 모래가 부드럽게 굽이치며 끝나요. 47장(8×6칸). 조각 이름의 N · E · S · W는 같은 타일이 이어진 방향(위 · 오른쪽 · 아래 · 왼쪽), +ne 같은 소문자는 대각 이웃이에요.","file":"rule_edge_sand.png","w":256,"h":192,"tw":32,"th":32,"mode":"multiple","slices":[{"id":"m0","name":"모래 경계_고립","x":0,"y":0,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m1","name":"모래 경계_N","x":32,"y":0,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m2","name":"모래 경계_E","x":64,"y":0,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m3","name":"모래 경계_NE","x":96,"y":0,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m4","name":"모래 경계_S","x":128,"y":0,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m5","name":"모래 경계_NS","x":160,"y":0,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m6","name":"모래 경계_ES","x":192,"y":0,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m7","name":"모래 경계_NES","x":224,"y":0,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m8","name":"모래 경계_W","x":0,"y":32,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m9","name":"모래 경계_NW","x":32,"y":32,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m10","name":"모래 경계_EW","x":64,"y":32,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m11","name":"모래 경계_NEW","x":96,"y":32,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m12","name":"모래 경계_SW","x":128,"y":32,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m13","name":"모래 경계_NSW","x":160,"y":32,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m14","name":"모래 경계_ESW","x":192,"y":32,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m15","name":"모래 경계_NESW","x":224,"y":32,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m19","name":"모래 경계_NE+ne","x":0,"y":64,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m23","name":"모래 경계_NES+ne","x":32,"y":64,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m27","name":"모래 경계_NEW+ne","x":64,"y":64,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m31","name":"모래 경계_NESW+ne","x":96,"y":64,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m38","name":"모래 경계_ES+se","x":128,"y":64,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m39","name":"모래 경계_NES+se","x":160,"y":64,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m46","name":"모래 경계_ESW+se","x":192,"y":64,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m47","name":"모래 경계_NESW+se","x":224,"y":64,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m55","name":"모래 경계_NES+ne,se","x":0,"y":96,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m63","name":"모래 경계_NESW+ne,se","x":32,"y":96,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m76","name":"모래 경계_SW+sw","x":64,"y":96,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m77","name":"모래 경계_NSW+sw","x":96,"y":96,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m78","name":"모래 경계_ESW+sw","x":128,"y":96,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m79","name":"모래 경계_NESW+sw","x":160,"y":96,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m95","name":"모래 경계_NESW+ne,sw","x":192,"y":96,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m110","name":"모래 경계_ESW+se,sw","x":224,"y":96,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m111","name":"모래 경계_NESW+se,sw","x":0,"y":128,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m127","name":"모래 경계_NESW+ne,se,sw","x":32,"y":128,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m137","name":"모래 경계_NW+nw","x":64,"y":128,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m139","name":"모래 경계_NEW+nw","x":96,"y":128,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m141","name":"모래 경계_NSW+nw","x":128,"y":128,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m143","name":"모래 경계_NESW+nw","x":160,"y":128,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m155","name":"모래 경계_NEW+ne,nw","x":192,"y":128,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m159","name":"모래 경계_NESW+ne,nw","x":224,"y":128,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m175","name":"모래 경계_NESW+se,nw","x":0,"y":160,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m191","name":"모래 경계_NESW+ne,se,nw","x":32,"y":160,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m205","name":"모래 경계_NSW+sw,nw","x":64,"y":160,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m207","name":"모래 경계_NESW+sw,nw","x":96,"y":160,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m223","name":"모래 경계_NESW+ne,sw,nw","x":128,"y":160,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m239","name":"모래 경계_NESW+se,sw,nw","x":160,"y":160,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m255","name":"모래 경계_전체","x":192,"y":160,"w":32,"h":32,"px":0.5,"py":0.5}],"anims":[],"noMix":true,"rule":true,"src":"assets/sprites/rule_edge_sand.png","added":"2026-11-04","under":"store_tile_grass","hint":"아래에 다른 바닥을 먼저 깔고 그 위에 이 룰타일을 덮어 깔아요. 이웃한 칸에 맞춰 47장 중 알맞은 조각을 고르면 가장자리가 끊김 없이 이어져요. 위 그림은 그 규칙대로 깐 예시예요. "},
 {"id":"store_rule_edge_snow","name":"눈 경계 룰타일","en":"Snow Edge (Rule Tile)","kind":"sprite","cat":"tile","group":"룰타일","sub":"룰타일","tags":["타일","룰타일","경계","바닥","겨울"],"desc":"풀밭 위에 쌓인 눈을 덮어 깔 때 쓰는 경계 조각. 푸른 그늘이 진 소복한 눈덩이 가장자리예요. 47장(8×6칸). 조각 이름의 N · E · S · W는 같은 타일이 이어진 방향(위 · 오른쪽 · 아래 · 왼쪽), +ne 같은 소문자는 대각 이웃이에요.","file":"rule_edge_snow.png","w":256,"h":192,"tw":32,"th":32,"mode":"multiple","slices":[{"id":"m0","name":"눈 경계_고립","x":0,"y":0,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m1","name":"눈 경계_N","x":32,"y":0,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m2","name":"눈 경계_E","x":64,"y":0,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m3","name":"눈 경계_NE","x":96,"y":0,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m4","name":"눈 경계_S","x":128,"y":0,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m5","name":"눈 경계_NS","x":160,"y":0,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m6","name":"눈 경계_ES","x":192,"y":0,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m7","name":"눈 경계_NES","x":224,"y":0,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m8","name":"눈 경계_W","x":0,"y":32,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m9","name":"눈 경계_NW","x":32,"y":32,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m10","name":"눈 경계_EW","x":64,"y":32,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m11","name":"눈 경계_NEW","x":96,"y":32,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m12","name":"눈 경계_SW","x":128,"y":32,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m13","name":"눈 경계_NSW","x":160,"y":32,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m14","name":"눈 경계_ESW","x":192,"y":32,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m15","name":"눈 경계_NESW","x":224,"y":32,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m19","name":"눈 경계_NE+ne","x":0,"y":64,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m23","name":"눈 경계_NES+ne","x":32,"y":64,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m27","name":"눈 경계_NEW+ne","x":64,"y":64,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m31","name":"눈 경계_NESW+ne","x":96,"y":64,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m38","name":"눈 경계_ES+se","x":128,"y":64,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m39","name":"눈 경계_NES+se","x":160,"y":64,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m46","name":"눈 경계_ESW+se","x":192,"y":64,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m47","name":"눈 경계_NESW+se","x":224,"y":64,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m55","name":"눈 경계_NES+ne,se","x":0,"y":96,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m63","name":"눈 경계_NESW+ne,se","x":32,"y":96,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m76","name":"눈 경계_SW+sw","x":64,"y":96,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m77","name":"눈 경계_NSW+sw","x":96,"y":96,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m78","name":"눈 경계_ESW+sw","x":128,"y":96,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m79","name":"눈 경계_NESW+sw","x":160,"y":96,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m95","name":"눈 경계_NESW+ne,sw","x":192,"y":96,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m110","name":"눈 경계_ESW+se,sw","x":224,"y":96,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m111","name":"눈 경계_NESW+se,sw","x":0,"y":128,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m127","name":"눈 경계_NESW+ne,se,sw","x":32,"y":128,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m137","name":"눈 경계_NW+nw","x":64,"y":128,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m139","name":"눈 경계_NEW+nw","x":96,"y":128,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m141","name":"눈 경계_NSW+nw","x":128,"y":128,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m143","name":"눈 경계_NESW+nw","x":160,"y":128,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m155","name":"눈 경계_NEW+ne,nw","x":192,"y":128,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m159","name":"눈 경계_NESW+ne,nw","x":224,"y":128,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m175","name":"눈 경계_NESW+se,nw","x":0,"y":160,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m191","name":"눈 경계_NESW+ne,se,nw","x":32,"y":160,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m205","name":"눈 경계_NSW+sw,nw","x":64,"y":160,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m207","name":"눈 경계_NESW+sw,nw","x":96,"y":160,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m223","name":"눈 경계_NESW+ne,sw,nw","x":128,"y":160,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m239","name":"눈 경계_NESW+se,sw,nw","x":160,"y":160,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m255","name":"눈 경계_전체","x":192,"y":160,"w":32,"h":32,"px":0.5,"py":0.5}],"anims":[],"noMix":true,"rule":true,"src":"assets/sprites/rule_edge_snow.png","added":"2026-11-04","under":"store_tile_grass","hint":"아래에 다른 바닥을 먼저 깔고 그 위에 이 룰타일을 덮어 깔아요. 이웃한 칸에 맞춰 47장 중 알맞은 조각을 고르면 가장자리가 끊김 없이 이어져요. 위 그림은 그 규칙대로 깐 예시예요. "},
-{"id":"store_rule_stairs_stone","name":"돌계단 룰타일","en":"Stone Stairs (Rule Tile)","kind":"sprite","cat":"tile","group":"룰타일","sub":"룰타일","tags":["타일","룰타일","경계","계단","마을","던전"],"desc":"세 단짜리 돌계단. 높은 바닥과 낮은 바닥 사이를 이어 주고, 꺾이는 곳 · 튀어나온 곳 · 오목한 곳마다 계단이 알아서 맞아요. 신전 · 성 · 광장 단차에. 47장(8×6칸). 조각 이름의 N · E · S · W는 같은 타일이 이어진 방향(위 · 오른쪽 · 아래 · 왼쪽), +ne 같은 소문자는 대각 이웃이에요.","file":"rule_stairs_stone.png","w":256,"h":192,"tw":32,"th":32,"mode":"multiple","slices":[{"id":"m0","name":"돌계단_고립","x":0,"y":0,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m1","name":"돌계단_N","x":32,"y":0,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m2","name":"돌계단_E","x":64,"y":0,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m3","name":"돌계단_NE","x":96,"y":0,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m4","name":"돌계단_S","x":128,"y":0,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m5","name":"돌계단_NS","x":160,"y":0,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m6","name":"돌계단_ES","x":192,"y":0,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m7","name":"돌계단_NES","x":224,"y":0,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m8","name":"돌계단_W","x":0,"y":32,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m9","name":"돌계단_NW","x":32,"y":32,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m10","name":"돌계단_EW","x":64,"y":32,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m11","name":"돌계단_NEW","x":96,"y":32,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m12","name":"돌계단_SW","x":128,"y":32,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m13","name":"돌계단_NSW","x":160,"y":32,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m14","name":"돌계단_ESW","x":192,"y":32,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m15","name":"돌계단_NESW","x":224,"y":32,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m19","name":"돌계단_NE+ne","x":0,"y":64,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m23","name":"돌계단_NES+ne","x":32,"y":64,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m27","name":"돌계단_NEW+ne","x":64,"y":64,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m31","name":"돌계단_NESW+ne","x":96,"y":64,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m38","name":"돌계단_ES+se","x":128,"y":64,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m39","name":"돌계단_NES+se","x":160,"y":64,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m46","name":"돌계단_ESW+se","x":192,"y":64,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m47","name":"돌계단_NESW+se","x":224,"y":64,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m55","name":"돌계단_NES+ne,se","x":0,"y":96,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m63","name":"돌계단_NESW+ne,se","x":32,"y":96,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m76","name":"돌계단_SW+sw","x":64,"y":96,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m77","name":"돌계단_NSW+sw","x":96,"y":96,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m78","name":"돌계단_ESW+sw","x":128,"y":96,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m79","name":"돌계단_NESW+sw","x":160,"y":96,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m95","name":"돌계단_NESW+ne,sw","x":192,"y":96,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m110","name":"돌계단_ESW+se,sw","x":224,"y":96,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m111","name":"돌계단_NESW+se,sw","x":0,"y":128,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m127","name":"돌계단_NESW+ne,se,sw","x":32,"y":128,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m137","name":"돌계단_NW+nw","x":64,"y":128,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m139","name":"돌계단_NEW+nw","x":96,"y":128,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m141","name":"돌계단_NSW+nw","x":128,"y":128,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m143","name":"돌계단_NESW+nw","x":160,"y":128,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m155","name":"돌계단_NEW+ne,nw","x":192,"y":128,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m159","name":"돌계단_NESW+ne,nw","x":224,"y":128,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m175","name":"돌계단_NESW+se,nw","x":0,"y":160,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m191","name":"돌계단_NESW+ne,se,nw","x":32,"y":160,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m205","name":"돌계단_NSW+sw,nw","x":64,"y":160,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m207","name":"돌계단_NESW+sw,nw","x":96,"y":160,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m223","name":"돌계단_NESW+ne,sw,nw","x":128,"y":160,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m239","name":"돌계단_NESW+se,sw,nw","x":160,"y":160,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m255","name":"돌계단_전체","x":192,"y":160,"w":32,"h":32,"px":0.5,"py":0.5}],"anims":[],"noMix":true,"rule":true,"src":"assets/sprites/rule_stairs_stone.png","added":"2026-11-04","under":"store_tile_grass","demo":[".####...",".####...",".#######",".#######"],"hint":"평평한 바닥 위에 올린 단을 칠하듯 깔아요. 단 안쪽 칸은 맨 윗면, 바깥으로 갈수록 한 계단씩 낮아지고 모서리에서는 계단이 꺾여 이어져요. 위 그림은 그 규칙대로 깐 예시예요. "}
+{"id":"store_rule_stairs_stone","name":"돌계단 룰타일","en":"Stone Stairs (Rule Tile)","kind":"sprite","cat":"tile","group":"룰타일","sub":"룰타일","tags":["타일","룰타일","경계","계단","마을","던전"],"desc":"세 단짜리 돌계단. 높은 바닥과 낮은 바닥 사이를 이어 주고, 꺾이는 곳 · 튀어나온 곳 · 오목한 곳마다 계단이 알아서 맞아요. 신전 · 성 · 광장 단차에. 47장(8×6칸). 조각 이름의 N · E · S · W는 같은 타일이 이어진 방향(위 · 오른쪽 · 아래 · 왼쪽), +ne 같은 소문자는 대각 이웃이에요.","file":"rule_stairs_stone.png","w":256,"h":192,"tw":32,"th":32,"mode":"multiple","slices":[{"id":"m0","name":"돌계단_고립","x":0,"y":0,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m1","name":"돌계단_N","x":32,"y":0,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m2","name":"돌계단_E","x":64,"y":0,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m3","name":"돌계단_NE","x":96,"y":0,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m4","name":"돌계단_S","x":128,"y":0,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m5","name":"돌계단_NS","x":160,"y":0,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m6","name":"돌계단_ES","x":192,"y":0,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m7","name":"돌계단_NES","x":224,"y":0,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m8","name":"돌계단_W","x":0,"y":32,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m9","name":"돌계단_NW","x":32,"y":32,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m10","name":"돌계단_EW","x":64,"y":32,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m11","name":"돌계단_NEW","x":96,"y":32,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m12","name":"돌계단_SW","x":128,"y":32,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m13","name":"돌계단_NSW","x":160,"y":32,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m14","name":"돌계단_ESW","x":192,"y":32,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m15","name":"돌계단_NESW","x":224,"y":32,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m19","name":"돌계단_NE+ne","x":0,"y":64,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m23","name":"돌계단_NES+ne","x":32,"y":64,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m27","name":"돌계단_NEW+ne","x":64,"y":64,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m31","name":"돌계단_NESW+ne","x":96,"y":64,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m38","name":"돌계단_ES+se","x":128,"y":64,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m39","name":"돌계단_NES+se","x":160,"y":64,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m46","name":"돌계단_ESW+se","x":192,"y":64,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m47","name":"돌계단_NESW+se","x":224,"y":64,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m55","name":"돌계단_NES+ne,se","x":0,"y":96,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m63","name":"돌계단_NESW+ne,se","x":32,"y":96,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m76","name":"돌계단_SW+sw","x":64,"y":96,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m77","name":"돌계단_NSW+sw","x":96,"y":96,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m78","name":"돌계단_ESW+sw","x":128,"y":96,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m79","name":"돌계단_NESW+sw","x":160,"y":96,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m95","name":"돌계단_NESW+ne,sw","x":192,"y":96,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m110","name":"돌계단_ESW+se,sw","x":224,"y":96,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m111","name":"돌계단_NESW+se,sw","x":0,"y":128,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m127","name":"돌계단_NESW+ne,se,sw","x":32,"y":128,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m137","name":"돌계단_NW+nw","x":64,"y":128,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m139","name":"돌계단_NEW+nw","x":96,"y":128,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m141","name":"돌계단_NSW+nw","x":128,"y":128,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m143","name":"돌계단_NESW+nw","x":160,"y":128,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m155","name":"돌계단_NEW+ne,nw","x":192,"y":128,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m159","name":"돌계단_NESW+ne,nw","x":224,"y":128,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m175","name":"돌계단_NESW+se,nw","x":0,"y":160,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m191","name":"돌계단_NESW+ne,se,nw","x":32,"y":160,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m205","name":"돌계단_NSW+sw,nw","x":64,"y":160,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m207","name":"돌계단_NESW+sw,nw","x":96,"y":160,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m223","name":"돌계단_NESW+ne,sw,nw","x":128,"y":160,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m239","name":"돌계단_NESW+se,sw,nw","x":160,"y":160,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"m255","name":"돌계단_전체","x":192,"y":160,"w":32,"h":32,"px":0.5,"py":0.5}],"anims":[],"noMix":true,"rule":true,"src":"assets/sprites/rule_stairs_stone.png","added":"2026-11-04","under":"store_tile_grass","demo":[".####...",".####...",".#######",".#######"],"hint":"평평한 바닥 위에 올린 단을 칠하듯 깔아요. 단 안쪽 칸은 맨 윗면, 바깥으로 갈수록 한 계단씩 낮아지고 모서리에서는 계단이 꺾여 이어져요. 위 그림은 그 규칙대로 깐 예시예요. "},
+{"id":"store_ix_plate","name":"바닥 스위치","en":"Pressure Plate","kind":"sprite","cat":"object","group":"사물","sub":"사물","tags":["사물","상호작용","던전","퍼즐"],"desc":"밟으면 꾹 눌려 초록 불이 들어오는 압력판. 문 열기나 함정 퍼즐의 발판으로 써요. 올라옴 · 눌림 2장이에요.","file":"switch_plate.png","w":64,"h":32,"tw":32,"th":32,"mode":"multiple","slices":[{"id":"ixplate0","name":"스위치_올라옴","x":0,"y":0,"w":32,"h":32,"px":0.5,"py":1},{"id":"ixplate1","name":"스위치_눌림","x":32,"y":0,"w":32,"h":32,"px":0.5,"py":1}],"anims":[{"name":"눌렀다 떼기","frames":["ixplate0","ixplate1"],"fps":1.5}],"src":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAgCAYAAACinX6EAAABg0lEQVR4XmNgGAWjYBSMglEwCkbBKBihgHEo+tvnZpc4LndvUS97SYqfhkwA4PM0JYEx6AOAHI+jA3ypgomU5EJvQA3PgwA+cwZtAFDL8zCAy7xBGQDU9jy+QBh0AUArz+MKBJyFoJSIwH9q5vlnbz4QLHBp7XlkACsYWfB58um5InzSRANpoz6i1dIb4E0Bt5f+xuke1WhWFDlCagmlAHrGPgyAUsGgKwPoDfBmAXwAX4xTA5yzbntBDXNgwOholQQ28/AGwMmjf7HpIQOgZhd0gCv5T3i9lwy7MEGBqDNWc0D2wgOA2qU+OkA3H71MwBbji27hDoBz1m0oVhgdrcIbWOjmw1IESgpoaZsFN6SmKo0hZhoHXkNJAehmYwPoatA9iQ8QUovLfpQAuHTpCtyOsIg8UvxHECCbjQsMhP0jvhYYDQCCaXeYA5Qy4NatWwPiXVCLTEpEgO72g+xFCYAL53YMSADAwEDYDw8AQm11WgNcLTVag0FTBpA6mkspgNkHAKBoh1plUwVvAAAAAElFTkSuQmCC","added":"2026-11-04"},
+{"id":"store_ix_lever","name":"레버","en":"Lever","kind":"sprite","cat":"object","group":"사물","sub":"사물","tags":["사물","상호작용","던전","퍼즐","애니메이션"],"desc":"왼쪽 · 가운데 · 오른쪽으로 당기는 쇠 레버. 손잡이 색이 빨강 → 노랑 → 초록으로 바뀌어 켜짐을 알려 줘요. 3장.","file":"lever.png","w":96,"h":32,"tw":32,"th":32,"mode":"multiple","slices":[{"id":"ixlever0","name":"레버_왼쪽","x":0,"y":0,"w":32,"h":32,"px":0.5,"py":1},{"id":"ixlever1","name":"레버_가운데","x":32,"y":0,"w":32,"h":32,"px":0.5,"py":1},{"id":"ixlever2","name":"레버_오른쪽","x":64,"y":0,"w":32,"h":32,"px":0.5,"py":1}],"anims":[{"name":"당기기","frames":["ixlever0","ixlever1","ixlever2"],"fps":3}],"src":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAAAgCAYAAADtwH1UAAACRklEQVR4Xu2ZP0jDQBTGT9HFycHJWaV1KNJJ6GgHJxEHEQXH4iTSRSmO0lGKY3dFOjg411Fw6hBESu1aFx3cHZQXeNfL5f4lqTSX3A8Ea5O7y/fe+95rJcThyDMzNj/88tLiL57/4+vbymex8tAo/PvtD82f1aN5/3fbAjFrawWMenWyUDynx2eDYRPKCkhjicOZVGJDJaSlCkz0mxNlC97YLazQt6v9oe+3aXm4NIP6lZ8b42NWmkL9pBY0ujghxd0qXYANhkNP6/OJHK9t0QsDwWAIWRBETyV2tT+cehXIbCgN9gNnk4kN9CrNgH7WNmGcehD+tS0Ie4At8KLb2J9CFQAPATYjIg32w9J96ZPr9oP/kybAZkTw9gNILYgPAr5mRytHEFYbPgiyoAgtCEsZR08As6xe23O6a4DK9Lw3Uq+MtZLZo1EThgVZXBWEUWmi6k3KANBK2CyQUmk9UAkOMZj9iG4wMKoAEa4Kxoi0MLVqbQBcFZgTNfuVU5AJrgpIouw3DoCrAj1xst84ACryXAVJvB/R9gC+m7uJKEzc7AcSfReEnR4yQTdu/QeQDNOCzX44B3xQNZ18WKT/ETOxlp3DM7rW411LqUXUAOVlf2UArprtkKiXjZr/N1Z8BIIguydOAERrAXCGrOyvtCDPe6Xidu5vlBmOYID2D06NrleRh/2NmzAPbzk6C5o0WdnfuAmLMrrD+P4kMl5FVvdXBmAwGChF2Shv0/d118ZBt2YW9k80BUUhThOOsr4O2/Z3OPLBH5sjWHibtgrYAAAAAElFTkSuQmCC","added":"2026-11-04"},
+{"id":"store_ix_wallbutton","name":"벽 버튼","en":"Wall Button","kind":"sprite","cat":"object","group":"사물","sub":"사물","tags":["사물","상호작용","연구소","던전","퍼즐"],"desc":"돌벽에 박힌 빨간 둥근 버튼. 누르면 쏙 들어가고 아래 표시등이 초록으로 바뀌어요. 2장.","file":"wall_button.png","w":64,"h":32,"tw":32,"th":32,"mode":"multiple","slices":[{"id":"ixwallbutton0","name":"버튼_튀어나옴","x":0,"y":0,"w":32,"h":32,"px":0.5,"py":0.5},{"id":"ixwallbutton1","name":"버튼_눌림","x":32,"y":0,"w":32,"h":32,"px":0.5,"py":0.5}],"anims":[{"name":"누르기","frames":["ixwallbutton0","ixwallbutton1"],"fps":1.5}],"src":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAgCAYAAACinX6EAAACDElEQVR4Xu2YsUvDQBTGozh2kOIkTtLBUfwbOjg4i4NzEUFxLOIo0lEUHDo7iJODg0P/BpEi6FCc1EnEobvyQr9yuby7vLtegrT3g9KSJvfd972X5LgkiUQis8ycbn55afG3zEA+v35ymipV6y9wZk/PuqVkcHLcEo1bpT4bQL//nLSO9tPJds+vRJM24TNOlfrzE7mbAtgOKKr87c0Fa3175zB33LeDbNeF1DcGYILE1zc2k6fHh8wpdIz+40IICfQ5fPTFAaipk/neWiMzh+YoEJwXOgiMS0GbQBEIqb44APDR3hv/frnrjX8jkObrIGTBc10GuA4kuO60IXoIIn2YJOOqeRWcY7pPfdDbnsy3a/XMRw1E7YQiCgOw3XM2XCZhgzNPITdX6pnLKBCfEAoD0DFVvgpQ+d77d/rR0UOQ4BzAtBEDcKmo5AkvOec/IQ4A718yyJlUj9ve1ZNA43aG+Xsf0H+u2oUB0IJCfbri9QPD+MZxQNdIFyM2dH1TCLp5qb5oIUSTwOuoM1rxkWEVVAYLkRDmgapPpCEwS3Gf8EUBqAOjxUwT0FdoIaGxoW9qdVd9cQCoKDqBm4C07XzQ9Tl89MUB6O3IEbLtTeB2CKVvDMC2k+Ni1GdHiKhK37kDwOr9daYIb1u7xqqVweCglhm2cTn0kvHaEXKhjB0hF4r0Z35bPBKJzDZ/yFceKemGt8EAAAAASUVORK5CYII=","added":"2026-11-04"},
+{"id":"store_ix_padlock","name":"자물쇠","en":"Padlock","kind":"sprite","cat":"object","group":"사물","sub":"사물","tags":["사물","상호작용","아이템","던전"],"desc":"황금빛 자물쇠. 열쇠를 쓰면 고리가 튕겨 올라가요. 잠긴 문 · 상자 위에 겹쳐 쓰기 좋아요. 2장.","file":"padlock.png","w":64,"h":32,"tw":32,"th":32,"mode":"multiple","slices":[{"id":"ixpadlock0","name":"자물쇠_잠김","x":0,"y":0,"w":32,"h":32,"px":0.5,"py":1},{"id":"ixpadlock1","name":"자물쇠_열림","x":32,"y":0,"w":32,"h":32,"px":0.5,"py":1}],"anims":[{"name":"열리기","frames":["ixpadlock0","ixpadlock1"],"fps":1.5}],"src":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAgCAYAAACinX6EAAABJklEQVR4XmNkGAJASkTgPznOfPbmAyMhfSyEFAwWsOfEDZKc4mKhQZT6IRMAly5dI8pDpIIhEwAwUJQWhNePfbPW4ZVHB0QFAC3zIDkAV94mx51EBQAI0CoPDjQgOgBolQcHGhAdALTKgwMNSA4AEKBmHqQmALkrIsiJJCOZSFI9DMFoAAzDSCUJjAYAScE1DMGIDwC83UVympbYADHdUmyAHvYTbAc8PVdEUcKXNuqjSD+t7R/xWYBgCvh2vZOiGGRgYKVIP63tpygFqEazgvFAAWrYT3YAIHt8IAKBWvaTHQDDBZAdALeX/oaHATKbXoBa9pMdAMMFjAbAcIlJcgHBdgA+MBB5HxlQw36CAXDy6F9yAxcKKGsn0Nr+Ed8ZGgWjYIQDANPgV9Mc+28iAAAAAElFTkSuQmCC","added":"2026-11-04"},
+{"id":"store_ix_runetablet","name":"룬 석판","en":"Rune Tablet","kind":"sprite","cat":"object","group":"사물","sub":"사물","tags":["사물","상호작용","던전","신비","퍼즐","애니메이션"],"desc":"가운데에 룬이 새겨진 석판. 건드리면 청록빛으로 켜지고 맥박처럼 깜빡여요. 퍼즐 · 봉인 장치에. 3장.","file":"rune_tablet.png","w":96,"h":32,"tw":32,"th":32,"mode":"multiple","slices":[{"id":"ixrunetablet0","name":"석판_꺼짐","x":0,"y":0,"w":32,"h":32,"px":0.5,"py":1},{"id":"ixrunetablet1","name":"석판_켜짐","x":32,"y":0,"w":32,"h":32,"px":0.5,"py":1},{"id":"ixrunetablet2","name":"석판_밝게","x":64,"y":0,"w":32,"h":32,"px":0.5,"py":1}],"anims":[{"name":"빛나기","frames":["ixrunetablet1","ixrunetablet2"],"fps":3}],"src":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAAAgCAYAAADtwH1UAAAC60lEQVR4Xu2aP26UQQzFN4gDRAiloEkT7XGoSQ6QIhUFFUIgEKKioEqRAySpc5Qo1SoNDQVCKDfYyJG8GGPPPE888y3Z/KQ0o828XT+P7e/PbPbIpGxNqt7IwfXymfevp3tbvxu3hTm4Xu4W9L/DG81mvgEvnm8vIxvV+PHrJmT2pug/LQXu85eTWlwh3r09hD6n2QT9ogGXl1dNgctiE/SfZAVr3Sn1jUxeff1obuf1DciAxWJx9zcKHawsfdQEHayI/vmbD26YLBOKJYiZz+f/bKoNsT7TghUka++fr//OtJ1v/g+X0P6lSckKkqWvM70UeKW/e7r3Z1KCDJBw4PWXyjAEyVAOvA44r98c7d993VJCeCaUxkuGA68DzuufXkL6KxNCBlCQ5Q+TZvC6/kwmFGQZeGnGav34DD4NUSjIMvDSDF5/f3EGnwYC6gEjQLI/E63nZb/XVO8L68EGoJlNJ6FHw9bZ70EnQfeH+8CZrbPfgz4fMQ024JE+rIUBo8sPw7pI8+0B6YaaMGGVF7lWmj4ysMqLXEPH0Vas8iLX0HGUgQ3g2u5NQQzaK6JwbfemIAbtFVG4tntTECN7BdI31qIEPVSQ0wCfAEJOON6FWM8SJCcc70KsZwmSE453IYYEXRIygE3QvaBX2bHgAMu636vsWMix1Co7UZpLkMz0nlnvITO9Z9Z7yEyPZr2k2YBMRjxGtGBdeXNsJKQbKkHeFW7GjTgE7wq39c5oFO8Kt/XOKBEyYIrGK5mi8UqyGu/alSBidBnSeqPLEOuFTgCjS45+RuA9M8hClxz9jKC3vi45+hlBRB82wLr379E6FVFWeveFpH5t6qnpe6eNstK7LyT1a1MPoL96dwiegmjT2sYZeMHJ0q+VOq8Usb7XiFH0/rABI6kFqRV0X88Eopb9Jax9iyXIGztHkamPBl+SrG++sui+LrgprwZ6jPr9ofc1p8RrzpUjn/aibstDm1IpY/4bAyQP6e3oW0S+s78e9YgoAAAAAElFTkSuQmCC","added":"2026-11-04"},
+{"id":"store_ix_portcullis","name":"쇠창살 문","en":"Portcullis","kind":"sprite","cat":"object","group":"사물","sub":"사물","tags":["사물","상호작용","던전","건물","애니메이션"],"desc":"석조 아치에 달린 쇠창살 문. 4장 순서대로 돌리면 철컹철컹 올라가고, 거꾸로 돌리면 닫혀요. 던전 · 성 입구에.","file":"portcullis.png","w":128,"h":32,"tw":32,"th":32,"mode":"multiple","slices":[{"id":"ixportcullis0","name":"창살문_닫힘","x":0,"y":0,"w":32,"h":32,"px":0.5,"py":1},{"id":"ixportcullis1","name":"창살문_올라가는중1","x":32,"y":0,"w":32,"h":32,"px":0.5,"py":1},{"id":"ixportcullis2","name":"창살문_올라가는중2","x":64,"y":0,"w":32,"h":32,"px":0.5,"py":1},{"id":"ixportcullis3","name":"창살문_열림","x":96,"y":0,"w":32,"h":32,"px":0.5,"py":1}],"anims":[{"name":"올라가기","frames":["ixportcullis0","ixportcullis1","ixportcullis2","ixportcullis3"],"fps":3}],"src":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAAAgCAYAAADaInAlAAAB8klEQVR4Xu2bMUrEUBCGo+wBLKw8QI5iYWGxhSwiVsuWi1iKpVhLKpGtRGSxsLAQsQoWFhYiQSxyACsLb6AkmCUvbB7JMPvPuJmvexD2z0z+N5nJ8oLA6DQrRfQb62s/yEx8fn3PtDNMXyb/vfJDPzm9gHjg+Gg0V8f08fl3DJAk7xAD1GH6+Pyvij5xQxynApS5mUasN7czGLf6PdPH5L/WABnbuwetHlodd9dnpN8x/cXn314BHcdbAW6vLvP0xC/PQZJ8BOPhkLTuEW1m+ovPv9cAhg6i6Ny5kbZrH44B0jQVjdj05+e/qIQFbdeNDRCG4ezat9cHuBmq+tFkkt9D9vrJoK4PR/1GsWiLHwHsFUDZ3XH8xJYDij4nWvVhBqDsLs4mkKJPrTjVipVVIIo+J3X6MAP8RzgrkFbMAB6KCtTf28+voq6pYzACM0AD2nbd1es1Q/xEYywL3u8AnE1QE7R2yigk4ncMUO0U0U2Q1k4ZhUT8sP8CKO7mrEAUfU606sOaQIq7OSsQRZ8TrfowA1Cgjl3VsU3zGCaNagMULPMYJo2NgR3HOwai0doooZCI3zsGotHaKKGQiN/bA9gYxofE7i5Tp+81gI1hfEjs7jJ1+rPzeVubA+jZwPvHqXM20PRl8m+HQ//o+uFUo6P8AuNbJATVVz2AAAAAAElFTkSuQmCC","added":"2026-11-04"},
+{"id":"store_ix_crystalorb","name":"수정 구슬 제단","en":"Crystal Orb Altar","kind":"sprite","cat":"object","group":"사물","sub":"사물","tags":["사물","상호작용","수정","신비","던전","애니메이션"],"desc":"제단 위에 놓인 수정 구슬. 평소엔 어둡다가 만지면 푸른 빛이 맥박처럼 번지고 반짝임이 옮겨 다녀요. 4장.","file":"crystal_orb.png","w":128,"h":32,"tw":32,"th":32,"mode":"multiple","slices":[{"id":"ixcrystalorb0","name":"구슬_꺼짐","x":0,"y":0,"w":32,"h":32,"px":0.5,"py":1},{"id":"ixcrystalorb1","name":"구슬_켜짐1","x":32,"y":0,"w":32,"h":32,"px":0.5,"py":1},{"id":"ixcrystalorb2","name":"구슬_켜짐2","x":64,"y":0,"w":32,"h":32,"px":0.5,"py":1},{"id":"ixcrystalorb3","name":"구슬_켜짐3","x":96,"y":0,"w":32,"h":32,"px":0.5,"py":1}],"anims":[{"name":"맥동","frames":["ixcrystalorb1","ixcrystalorb2","ixcrystalorb3","ixcrystalorb2"],"fps":4}],"src":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAAAgCAYAAADaInAlAAAERElEQVR4Xu2bv2oUURTGE7HPFgElhazBzsUiiI+wTyCSwiKFWFptJSJBxCqVpVikSBHEJ5hHEEkhm05isBAFi80TRM5kznC4e/9858y9cRLmB9vsztxvZr7v3nvmzuzqSs+Z7i9udT3Eamf0x9rGdH9x17ovU+2MfljbmO4v7lv3FfrHoTZuhH7oAznMJ6zt5DC/0TeFKIf5jX4wRL0NgNW0ENr2cpnPaNvLZb7Q94aglwHQmoWCtqs1CwVtN7f5sRCsogfvsrE+One/+/V3YW5PHCQ0589n49+u/mTv9DZyPrGaADVpPhufePQ3Qf1gTYCaP5+N5x79Cajf1gRqw9j46dPdJa3q4OI7axCQHsrGT/ZOl/Tns3H9HRIEXwgQ89n4hH4yCL7CEDGfjU/oJ4NQ7VyE4CaSGIbM9xnf9t4mFNXB7rk1BDHIfN+JM/xbsx00Gmgg80F92i4ZAi1kPqhP2yVDQMAjAJv/6OGD9ri/fP0WPAcaDTQhSPV+Nv/N9lqr+frwLKhPo0FqJJCjQKr3s/lK/WgI5CiQ6v1sfkifvpfXozn/aAhoFICKQGn+s8db9YeQYXCh0cBXJ1iQ5m+tnNUfQl4MF+opvjrBgjRfqb9UJ1iQ5of03c7QnP9SneACBUAO+x8/H9UfhNh0oUEOe0cra/XHhxuI2HCpAdX3hTAHJfWTAejai5H9Y8O/phf7poTY/qwbG/591b6G2P6sGxv+fdU+AneG2P6kmwyAxJ3zYzVACVyDYzVACa6SPnptVHcBxGWb7oKeWCkQfbcgywmir0E1Agxg5DbJJVb8ahkCcAXJGbBiAfh58r3opU31gtOqKqqf4n/p83VB9ZMBoMUcXuJFTeXttItBPmgxh5d45UnFegFvhywGpaAVPZ++xA2jo99pRZBW9FL6Eroujn50MSgZAMmdzXu1uaEgyN9oWxT0hY3xdFqfXCjd8jfaNgXroi9shPQ5jAb9+qEQr8unKHD+x+qlYCIUAIbM1/Z+dCmYCAWAoQuF9H7LUrBSP/tSsFI/z1IwIaeCWO+2mI8gp4JY70bN1yKnAlC/09DvIqcCUD/vwyBmeBx8sb5/XR4HR6cAZBkXAX0q6E4DmmXgGL6ngsj7AF2XgRnfo2HkfQDrMrBv9HC/g98HePvuA+JxkFcvn8P7kyluCEro+8wnyBT3uUAhfe8bQWSK+1ygkH77RpDqLuAyCJmTi1T76B2BlVT76B2BFbf93gWg6Ynm9/hjpMxnUiZZQdstFQJfu72qAVxy1SBUA6DmSzLqb6LmF9KfhEKlWgd4sv0CCv+nw/dw4ZeCawIqCDX6svCzmM9wTUAFoVK/vQ20mC/06/f5qSBU6reFX2xEUT8OvmzYvI31kVq6i/HudGDUN/8lTOjXBZtRP/iXMKaXNUAOcpjfhS69PgexXi9RTQGaA0Pv/VG08/Gg3/1POgMDA9edfwPI/W8BZwJUAAAAAElFTkSuQmCC","added":"2026-11-04"},
+{"id":"store_ix_valve","name":"밸브 핸들","en":"Valve Wheel","kind":"sprite","cat":"object","group":"사물","sub":"사물","tags":["사물","상호작용","연구소","광산","퍼즐","애니메이션"],"desc":"파이프에 달린 빨간 밸브 핸들. 4프레임을 돌리면 빙글빙글 돌아가요. 연구소 · 광산 · 수문 장치에.","file":"valve_wheel.png","w":128,"h":32,"tw":32,"th":32,"mode":"multiple","slices":[{"id":"ixvalve0","name":"밸브_0","x":0,"y":0,"w":32,"h":32,"px":0.5,"py":1},{"id":"ixvalve1","name":"밸브_1","x":32,"y":0,"w":32,"h":32,"px":0.5,"py":1},{"id":"ixvalve2","name":"밸브_2","x":64,"y":0,"w":32,"h":32,"px":0.5,"py":1},{"id":"ixvalve3","name":"밸브_3","x":96,"y":0,"w":32,"h":32,"px":0.5,"py":1}],"anims":[{"name":"돌리기","frames":["ixvalve0","ixvalve1","ixvalve2","ixvalve3"],"fps":6}],"src":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAAAgCAYAAADaInAlAAAD3klEQVR4Xu1bPW8TQRCNET+AgoqaIvQUFJSuEUrJD3CN8kMQNT+AEiFqFxFV6hTBBTUVRf5B0Bwe63nyZnf242wL9klRZN/dvps3szOze+fFWQWePX1y71326/fdomLIIgz+fvoXOUuFX58/dx223Pycjs0RCIP/r+N76h8OABE/RWwhgdAzCAb/PPpnA8DOuhdvlztf//i63s14Fpk9soE363VsBQvOXvypsRH2vF78KW1b+UMBgIapUfodznTmrNZMYGe+FRWP23sTtPLfvn651++knHoI+xXMrhr+R6nuy4qbE1NSvvzJeeiMVNNWw58qLb352f0xfi9TyUTpaT/CjlujvxsArOZGa7o9r0aEU+TXVGyF92YelqfSIPDsZ1nOokT/ZAbw0o3OMk8QAZ7TC0x4LEWInvyY0TybbZnsze9NPhZY+p3tkxhoAEQ7bitMCiVZgPHL9TqGHEcjI81WK791KN4L2u2VyVZ+BQss1QJ1Ub1yWehx0mvbJkrAIm19vZmO3dzcnl2uLu5tlG5vtmj5aOF1+/K94aepcLlp51e70B7Lv1xdPFgF9LKfzX5i/4PVQqRcZAPAWwJ9+PRlcrxCPksQ5AKqBiqABKEa5fFH+5RaqFMZvwTB3PyoN9F/OowZkU1cRDYASsECphcwELwxxeBDOeGQyDlSkVupWWQDINJInBpUrDkCIeqInvD2QhhKbQ6tAnR9if8vV/s1Vz9rY4j/e0Pug/Fr46NZqKezbIPl8ffkFGAzh023p38p6E4gi7jU5ofCnhMdxyJ3HRNZuNl6HBFNj96MYzuiCrYMzNnhITXjUWPUQfitfRF+mgFK1rB2ueEhKr4gwo+82KXrtXaJ2srPHIwZEUslW/K18isX6luS7j3+UAkoWcMqonsJESA/Rr1nlArTqyFlzrf3zfYJevJ7pQWDwOoU4XcDILXhkIO92ZLox3JiG1CW4pkwc/GzFItcXubqbT9Oslb7q58Gas1lW7GRGRMFq2Na72zvwQKkRnyEV4+x57DL07nt1zJpne/t2aRKRSgAhNAObneZpp0p86ZQZIs2B+ZUAVueDv79N7Ui+mcDoLamt848i9KeYvDH3sgKB4Agt8zCmZlKO7UY/Ed8JxADIIc5nD/4+QM5hhL9s1vBFm/evU/6/9vnj8njrRj8ffWfAsBbY9YiOl7k4U4NBr//uwGE6D/1AFODtX22n8Ly1XnIH9GxMACi10QQHWvw3y12JQCfLXuQZ+ARRMayiFwz+PvrH9oKHvh3MQLgP8euBFxdfT+qFIP/OPrvmsBjeH+uVUAUg3/+X3IPnDj+AA4wobrkKOhTAAAAAElFTkSuQmCC","added":"2026-11-04"},
+{"id":"store_ix_alert","name":"느낌표 말풍선","en":"Alert Bubble","kind":"sprite","cat":"object","group":"UI","sub":"UI","tags":["UI","상호작용","마을","애니메이션"],"desc":"머리 위에 띄우는 빨간 느낌표 말풍선. 대화할 수 있는 사람 · 조사할 수 있는 물건을 알려 줘요. 통통 튀는 4프레임.","file":"alert_bubble.png","w":128,"h":32,"tw":32,"th":32,"mode":"multiple","slices":[{"id":"ixalert0","name":"느낌표_0","x":0,"y":0,"w":32,"h":32,"px":0.5,"py":1},{"id":"ixalert1","name":"느낌표_1","x":32,"y":0,"w":32,"h":32,"px":0.5,"py":1},{"id":"ixalert2","name":"느낌표_2","x":64,"y":0,"w":32,"h":32,"px":0.5,"py":1},{"id":"ixalert3","name":"느낌표_3","x":96,"y":0,"w":32,"h":32,"px":0.5,"py":1}],"anims":[{"name":"통통 튀기","frames":["ixalert0","ixalert1","ixalert2","ixalert3"],"fps":6}],"src":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAAAgCAYAAADaInAlAAACUElEQVR4Xu2bO04DMRBADSKiQYKCCqXYgoKaag+wB0iRihNQcACOwAEoOAE1B8gBUtFCkSJFhCgQCh2QImhWONok6/VvdmZg/aTtgjxjvxmHtaNUIpFIJDrKTkfztnJyfLS0fsiDl7e5yLkWGRQ3sPjT2RQ1jKyfiZRArABcFagXv7d/uBJg8fWBIoOPBFT5ixSAqwKr44IATQvfu71RTw+jUozR7F1dPj86SeIiAWX+e6aoqQzcpK0KhJae9bOl1L1YQ51/rQAtGWid/M1xsSvQRwKstu8DR/67TRUIbbC6F8YAk4/dVRLxrAlQZ6CpEmAPnBRF+dydnTtF4iMBRwVKgir/rQ6Q6BZGAagMTPCSOkAgi6vr1V+6/gsokSRAx/mzAkiowNPRqHw4wMrf+CIo0Uzom0BpBAtQGvj7KpRrD+SqPilg5B8sADf/pQJDwco/SgAMAyUB5wRwXjAeO+zrg6E6GAzL8AdKqdfZxJpKnhfijoSDBcAyUBogQZ4X3bwP4HMIFCqA7TgUYnCqwAB8KrDp3MJ0WQRyM+F6Ckmdf3AHaAspFWhaMFggjIVuEoWyA21dCKE20ARXBbpQ1yltnc0XqvxrbwT5bAWuYE2Q7UjZtdXGsDk/WLm5gJ2/8UoYlYEhUFSgjWoMlAIAmPkbvwNw7YEhUC9AFc6xNeQxgIHfn/O1x9aasKnGQD22hmtc3QX0GsTEgXIYRG5gBc6xKb5v2GDLv+sVKIGYyo9GC8AaRCIa3x+GXDiOeO/4uRBsMbQ5tsYUA+fYGq8YfgAt8fAzYvRhcgAAAABJRU5ErkJggg==","added":"2026-11-04"},
+{"id":"store_ix_teleport","name":"순간이동 패드","en":"Teleport Pad","kind":"sprite","cat":"object","group":"사물","sub":"사물","tags":["사물","상호작용","우주","연구소","신비","애니메이션"],"desc":"위로 빛줄기가 솟는 돌 원판. 올라서면 다른 맵으로 이동하는 포털 자리로 써요. 4프레임.","file":"teleport_pad.png","w":128,"h":32,"tw":32,"th":32,"mode":"multiple","slices":[{"id":"ixteleport0","name":"패드_0","x":0,"y":0,"w":32,"h":32,"px":0.5,"py":1},{"id":"ixteleport1","name":"패드_1","x":32,"y":0,"w":32,"h":32,"px":0.5,"py":1},{"id":"ixteleport2","name":"패드_2","x":64,"y":0,"w":32,"h":32,"px":0.5,"py":1},{"id":"ixteleport3","name":"패드_3","x":96,"y":0,"w":32,"h":32,"px":0.5,"py":1}],"anims":[{"name":"작동","frames":["ixteleport0","ixteleport1","ixteleport2","ixteleport3"],"fps":6}],"src":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAAAgCAYAAADaInAlAAAFs0lEQVR4Xu2aMWgdRxCGTyG4cCWBAyKoNIJAbIIKoyqIVK6CEMY4wri3EK8SQoVIcHAhhKqHUPoQFBGEEClSBqHKuHDhBALCpQiCCKQqRRqZOWlO/83N7M7uu/dCovc19ju9239n59/Zvb1XFEOGDLm5jKSGvt+5uBe7Z7Y78lvsO7lsbcT1F5b6pz//Lq6/fbd/+m3H/0FuIob8P/gwM4zRwH3nmW2mMNS3SRp/9xKw37m4c6X5iaY9vl4cniwXn1/97Q/6d7Y7cpqS1RBbG2F9Qam/sNSe/vy7dP3tu+3p9yt+1xIQS75CaRK4rydCwU8tFoeWPtzXE4nJJ8r44b6eSEx+pe+JP1gBlASqs9+gnIVMTjVQAmjokwHebFaVB6np51QDJYGVfmeiOOweq7pMTT+nGnjiD+CK36wAbc1eJrU9j3sJI/kNvO0xObOXTGElJLU9q79GxYtitacaIDVZXrztpibLi7ddT7Iis1/F0y7h7SfjNYXWrmsPYEEbP/OPN5AcU6TirXheGgbwztJcYu173O91vEasfe8szSXWfqx/GimmkO3XDBBLjgQe+5KwdHKCl3jMYenEkhNa41OwdNqI3wPqpCwBKU8AROr3Y1TtOR3fN30NxRwD1Vdw6acY4D+B0xxZDGKNT8VT8UJUBkgt/71uAKXeoMofI/Vi5T9Gqjmk3r8Vf9K7gIXtsWrXv7d+VvtM7B2fFXMTY8XW/BkfCbfKy7WxQ9YIsbrSH/2D6ev4Q8y86o8+xd/QXSuv1K6nxB80wML22F8o+NnUw+rjt19+VfvM0HfQKMTW/NlHOU54uabrYz+Ir3/+sewPIwdqdSVP/2Dajj+ENMrMqzx9K/4YKfGrBuDEP37SKY6Ojky9R4/mit3dvZopCEzQ5ORk1Z7XCBw466MOJhrB70h9bs9rBE68jF/GK42nmZHi/+nKSF4jyPglmq6cqNxX0g/F3zAAJZ8Dv3//04YBbp9cV/dfNk+L2+I4/O/xepW6bONhZYSYCaizrM/mQ5OhPrPx4Lvyv9QXqU9tkCF4IGImoORLfYb6IfXlZ2lQ1CcjxEygxY+wnjYOBMfPYxaLv3oZRJsyTL4muvT6eTnYT2eeq1Xhh4PLRDAyGeVs2OlWlQBfENEmCIPX9Jkvnun6v36v6/OMYX02Ab4gok0ZJj+kf2tP1/9nzhc/mwBfEGH8NGlCpqc8vNlspoDi5xyhGRgt/soAH98ZvdBKPjqNGj9ZvmxufL3eAb5OoBFCJkADePQx8VOLdX0cEDSCpU8mQAOwfmjwMfGdibp+9/j6MxoB9aksv337ezkJyARogLbip3HhiihNgPocf/AcAJNPs56STImXyWdD8HWsEFapsl4PUycZvJeTTwHK5BN4HY1i6Vuvh62Zx8mnxMvkE3gdjYL62Lbn9XBO/DQRrPhRn+NvGIDKZQgyAc52xrouebLxItg+dlKDAtTKn3UdQXPlQjMdZztjXW+bXuLXaBhgZ+mb6ntYvuT6zgnXEm8tAbQGYfsa9B0G9eX6zgOhDYi1BFD5jYEmQX25vnPCtcSHloAYln4b8ePYMrVfBPE6RODjnyyjOZtAFqf178/Tc/WXSKhPlYJ31FI/dRNIpOqH4s/ZBLapnxM/rv84/o1EYBLkhoiw1lRt1hIsTISSz6C+NGKOPrp+qN+cfOZMpMGmpwIkdCiEyFJDA0/QGYDnt4FkgpC+PJCRkD6Zl0s+68udv4Wlj1XJAg3PsL7c+Xv1OZbQ+OPhkDX+Wvzmj0L5XAA7KQ1B4EDLgBk+/PEkv7rn6lwgpq/BA85oz/0x+FygDX3tuT/GoOJP+lWwfDdgoZ32pSQfTYAa8mzcQjvta+NXwfLdgIV22ud57JPIN4T9iD9oACb1VTGSk/jYQKSQk3hJL6+KcxI/yPiDB0FMbhJz75PkJjH3PkluEnPvG2T87wEMawJnQvODrgAAAABJRU5ErkJggg==","added":"2026-11-04"}
 ]</script>
 <script>
 (function(){
@@ -629,7 +727,9 @@ var IC={
   aud:'<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6 2.5l7-1.5v9.2a2.2 2.2 0 1 1-1.4-2V4L7.4 4.9v7.3a2.2 2.2 0 1 1-1.4-2z"/></svg>',
   dl:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v8.5M4.5 7l3.5 3.5L11.5 7M2.5 13.5h11"/></svg>',
   play:'<svg class="pl" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M5 3.2v9.6c0 .5.5.8.9.5l7.2-4.8a.6.6 0 0 0 0-1L5.9 2.7c-.4-.3-.9 0-.9.5z"/></svg><svg class="pa" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><rect x="3.5" y="2.5" width="3" height="11" rx="1"/><rect x="9.5" y="2.5" width="3" height="11" rx="1"/></svg>',
-  eng:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h9M8 4.5L11.5 8 8 11.5M13.5 2.5v11"/></svg>'
+  eng:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h9M8 4.5L11.5 8 8 11.5M13.5 2.5v11"/></svg>',
+  star:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M8 1.9l1.85 3.9 4.25.55-3.1 2.95.78 4.2L8 11.4l-3.78 2.1.78-4.2L1.9 6.35l4.25-.55z"/></svg>',
+  x:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"/></svg>'
 };
 
 /* ---------- 그림 불러오기 ---------- */
@@ -764,6 +864,7 @@ function toData(src){if(/^data:/.test(src))return Promise.resolve(src);
   return fetch(src).then(function(r){return r.blob()}).then(function(b){return new Promise(function(ok){var fr=new FileReader();fr.onload=function(){ok(fr.result)};fr.readAsDataURL(b)})})}
 function sendEngine(it){
   if(!ENGINE)return;
+  addHist(it);
   toData(it.src).then(function(src){var a=engineAsset(it);a.src=src;var rid=it.id+'#'+(++rseq);post({type:'thaniya-store:asset',version:1,rid:rid,asset:a});
     waitAck[rid]=setTimeout(function(){delete waitAck[rid];toast('엔진으로 보냈어요 · 들어가지 않았다면 받은 파일을 프로젝트 창의 가져오기로 넣어 주세요')},120000)});
 }
@@ -872,8 +973,53 @@ function download(it){
 
 /* ---------- 목록 ---------- */
 var byId={};ITEMS.forEach(function(it){byId[it.id]=it});
+
+/* ---------- 즐겨찾기 · 불러온 기록 저장 ----------
+   이 브라우저의 localStorage에 저장해요 (다른 기기와는 이어지지 않아요).
+   즐겨찾기: 에셋 id 목록(담은 순서) · 불러온 기록: {k:기록 번호, id, t:시각} — 같은 에셋을 여러 번 불러오면 그때마다 한 줄씩 남아요. */
+var LS_FAV='thaniya-store:fav',LS_HIST='thaniya-store:hist',HIST_MAX=200;
+var CAN_STORE=(function(){try{localStorage.setItem('__t','1');localStorage.removeItem('__t');return true}catch(e){return false}})();
+function lsGet(k){try{var v=JSON.parse(localStorage.getItem(k));return Array.isArray(v)?v:[]}catch(e){return[]}}
+function lsSet(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+var FAVS=[],FAVSET={},HIST=[];
+function reindexFav(){FAVSET={};FAVS.forEach(function(id){FAVSET[id]=1})}
+function loadStore(){
+  var seen={};
+  FAVS=lsGet(LS_FAV).filter(function(id){if(typeof id!=='string'||!byId[id]||seen[id])return false;seen[id]=1;return true});
+  reindexFav();
+  HIST=lsGet(LS_HIST).filter(function(h){return h&&typeof h.k==='string'&&byId[h.id]}).slice(0,HIST_MAX);
+}
+function saveFav(){lsSet(LS_FAV,FAVS)}
+function saveHist(){lsSet(LS_HIST,HIST)}
+loadStore();
+function isFav(id){return!!FAVSET[id]}
+function favBtn(it){var on=isFav(it.id);return'<button type="button" class="fav" data-fav="'+it.id+'" aria-pressed="'+on+'" aria-label="'+esc(it.name)+(on?' 즐겨찾기 해제':' 즐겨찾기에 담기')+'" title="'+(on?'즐겨찾기 해제':'즐겨찾기')+'">'+IC.star+'</button>'}
+function toggleFav(it){
+  if(isFav(it.id)){FAVS=FAVS.filter(function(x){return x!==it.id});toast(it.name+' · 즐겨찾기에서 뺐어요')}
+  else{FAVS.push(it.id);toast(it.name+' · 즐겨찾기에 담았어요')}
+  reindexFav();saveFav();refreshStore();
+}
+function addHist(it){
+  HIST.unshift({k:Date.now().toString(36)+Math.random().toString(36).slice(2,6),id:it.id,t:Date.now()});
+  HIST=HIST.slice(0,HIST_MAX);saveHist();refreshStore();
+}
+function syncFavBtns(){$$('#grid .fav').forEach(function(b){var it=byId[b.dataset.fav],on=isFav(it.id);b.setAttribute('aria-pressed',on);b.setAttribute('aria-label',it.name+(on?' 즐겨찾기 해제':' 즐겨찾기에 담기'));b.title=on?'즐겨찾기 해제':'즐겨찾기'})}
+function syncDFav(){
+  var b=$('#dFav');if(!b||!dItem)return;var on=isFav(dItem.id);
+  b.setAttribute('aria-pressed',on);b.setAttribute('aria-label',on?'즐겨찾기 해제':'즐겨찾기에 담기');b.title=on?'즐겨찾기 해제':'즐겨찾기';
+  $('.lb',b).textContent=on?'즐겨찾기됨':'즐겨찾기';
+}
+function syncFavUI(){$('#favF').setAttribute('aria-pressed',state.fav)}
+function refreshStore(){
+  if(state.fav)render();else syncFavBtns();
+  syncDFav();syncCounts();if(libOpen())renderLib();
+}
+function emptyHtml(){
+  if(state.fav&&!FAVS.length)return'<div class="empty"><strong>아직 즐겨찾기한 에셋이 없어요</strong>카드의 별(★)을 눌러 마음에 드는 에셋을 담아 보세요.</div>';
+  return'<div class="empty"><strong>찾는 에셋이 없어요</strong>'+(state.fav?'즐겨찾기 안에는 조건에 맞는 에셋이 없어요. 다른 이름이나 태그로 찾아보세요.':'다른 이름이나 태그로 찾아보세요.')+'</div>';
+}
 var PAGE=20;
-var state={k:'all',s:null,q:'',tag:null,n:PAGE,shown:0,tagsOpen:false};var TAGLIM=10;
+var state={k:'all',s:null,q:'',tag:null,n:PAGE,shown:0,tagsOpen:false,fav:false};var TAGLIM=10;
 /* 새로 나온 순: 항목에 \"added\":\"2026-11-01\" 처럼 날짜를 적으면 그 날짜 기준, 없으면 목록에서 뒤에 있을수록 새 에셋으로 봐요 */
 ITEMS.forEach(function(i,n){i._i=n});
 function newer(a,b){var x=a.added||'',y=b.added||'';return x!==y?(y>x?1:-1):b._i-a._i}
@@ -895,7 +1041,7 @@ var SUBS={
 var SUBNAME={tile:'타일 세부 카테고리',object:'오브젝트 세부 카테고리',audio:'음악 분위기'};
 function subOf(it){return it.sub||'기타'}
 function subsFor(k){
-  var cnt={};ITEMS.forEach(function(i){if(catOf(i)!==k)return;var s=subOf(i);cnt[s]=(cnt[s]||0)+1});
+  var cnt={};ITEMS.forEach(function(i){if(catOf(i)!==k||(state.fav&&!FAVSET[i.id]))return;var s=subOf(i);cnt[s]=(cnt[s]||0)+1});
   var list=(SUBS[k]||[]).filter(function(s){return cnt[s]});
   Object.keys(cnt).forEach(function(s){if(list.indexOf(s)<0)list.push(s)});
   return list.map(function(s){return{n:s,c:cnt[s]}});
@@ -910,7 +1056,7 @@ function renderSubs(){
     ls.map(function(x){return'<button type="button" class="sub" data-sub="'+esc(x.n)+'" aria-pressed="'+(state.s===x.n)+'">'+esc(x.n)+' <i>'+x.c+'</i></button>'}).join('');
   box.hidden=false;
 }
-function tagsFor(k,sb){var s={};ITEMS.forEach(function(i){if((k==='all'||catOf(i)===k)&&(!sb||subOf(i)===sb))i.tags.forEach(function(t){s[t]=(s[t]||0)+1})});return Object.keys(s).sort(function(a,b){return s[b]-s[a]})}
+function tagsFor(k,sb){var s={};ITEMS.forEach(function(i){if((k==='all'||catOf(i)===k)&&(!sb||subOf(i)===sb)&&(!state.fav||FAVSET[i.id]))i.tags.forEach(function(t){s[t]=(s[t]||0)+1})});return Object.keys(s).sort(function(a,b){return s[b]-s[a]})}
 function renderChips(){
   var ts=tagsFor(state.k,state.s);if(state.tag&&ts.indexOf(state.tag)<0)state.tag=null;
   var open=state.tagsOpen,vis=open?ts:ts.slice(0,TAGLIM);
@@ -919,6 +1065,7 @@ function renderChips(){
   $('#chips').innerHTML='<button type="button" class="chip" data-tag="" aria-pressed="'+(!state.tag)+'">모든 태그</button>'+vis.map(function(t){return'<button type="button" class="chip" data-tag="'+esc(t)+'" aria-pressed="'+(state.tag===t)+'">#'+esc(t)+'</button>'}).join('')+more;
 }
 function match(it){
+  if(state.fav&&!FAVSET[it.id])return false;
   if(state.k!=='all'&&catOf(it)!==state.k)return false;if(state.k!=='all'&&state.s&&subOf(it)!==state.s)return false;if(state.tag&&it.tags.indexOf(state.tag)<0)return false;
   var q=state.q.trim().toLowerCase();if(!q)return true;
   return[it.name,it.en,it.desc,it.group,subOf(it)].concat(it.tags,(it.slices||[]).map(function(s){return s.name})).join(' ').toLowerCase().indexOf(q)>=0;
@@ -926,14 +1073,14 @@ function match(it){
 function cardSpr(it){
   var a=it.anims&&it.anims.length,fr=a?it.anims[0].frames.length:it.slices.length;
   return'<article class="card" data-id="'+it.id+'"><div class="pv"><canvas class="pix" data-spr="'+it.id+'"></canvas><span class="kind">'+IC.spr+KIND[it.cat]+'</span>'+(NEWSET[it.id]?'<span class="newb">NEW</span>':'')+'</div>'+
-    '<div class="body"><h3><span>'+esc(it.name)+'</span><button type="button" class="dl" data-dl="'+it.id+'" aria-label="'+esc(it.name)+' PNG 받기" title="PNG 받기">'+IC.dl+'</button></h3>'+
+    '<div class="body"><h3><span>'+esc(it.name)+'</span><span class="ibs">'+favBtn(it)+'<button type="button" class="dl" data-dl="'+it.id+'" aria-label="'+esc(it.name)+' PNG 받기" title="PNG 받기">'+IC.dl+'</button></span></h3>'+
     '<span class="en">'+esc(it.en)+'</span><p class="meta"><span>'+it.tw+'×'+it.th+'</span><span>'+(a?'애니메이션 '+fr+'프레임':'조각 '+it.slices.length+'개')+'</span><span>PNG</span></p>'+
     '<div class="tags">'+it.tags.map(function(t){return'<span>#'+esc(t)+'</span>'}).join('')+'</div></div>'+
     '<button type="button" class="open" data-open="'+it.id+'" aria-label="'+esc(it.name)+' 자세히 보기"></button></article>';
 }
 function cardAud(it){
   return'<article class="card" data-id="'+it.id+'"><div class="pv music"><canvas class="wave" data-wave="'+it.id+'" aria-hidden="true"></canvas><button type="button" class="play" data-play="'+it.id+'" aria-label="듣기: '+esc(it.name)+'">'+IC.play+'</button><span class="kind">'+IC.aud+'Music</span>'+(NEWSET[it.id]?'<span class="newb">NEW</span>':'')+'<span class="time" data-time="'+it.id+'">'+fmtT(it.dur)+'</span></div>'+
-    '<div class="body"><h3><span>'+esc(it.name)+'</span><button type="button" class="dl" data-dl="'+it.id+'" aria-label="'+esc(it.name)+' MP3 받기" title="MP3 받기">'+IC.dl+'</button></h3>'+
+    '<div class="body"><h3><span>'+esc(it.name)+'</span><span class="ibs">'+favBtn(it)+'<button type="button" class="dl" data-dl="'+it.id+'" aria-label="'+esc(it.name)+' MP3 받기" title="MP3 받기">'+IC.dl+'</button></span></h3>'+
     '<span class="en">'+esc(it.en)+'</span><p class="meta"><span>'+it.bpm+' BPM</span><span>'+esc(it.key)+'</span><span>'+esc(it.beat)+'</span><span>반복 재생</span></p>'+
     '<div class="tags">'+it.tags.map(function(t){return'<span>#'+esc(t)+'</span>'}).join('')+'</div></div>'+
     '<button type="button" class="open" data-open="'+it.id+'" aria-label="'+esc(it.name)+' 자세히 보기"></button></article>';
@@ -946,12 +1093,12 @@ function bindCards(){
 }
 /* append=true 이면 이미 보이는 카드는 그대로 두고 새로 나올 카드만 뒤에 붙임 (더보기) */
 function render(append){
-  renderSubs();renderChips();renderThemes();
+  renderSubs();renderChips();renderThemes();syncFavUI();
   var list=ITEMS.filter(match).sort(newer),total=list.length,shown=Math.min(state.n,total),g=$('#grid');
   if(append&&state.shown>0&&state.shown<=shown){g.insertAdjacentHTML('beforeend',list.slice(state.shown,shown).map(cardOf).join(''))}
-  else{g.innerHTML=total?list.slice(0,shown).map(cardOf).join(''):'<div class="empty"><strong>찾는 에셋이 없어요</strong>다른 이름이나 태그로 찾아보세요.</div>'}
+  else{g.innerHTML=total?list.slice(0,shown).map(cardOf).join(''):emptyHtml()}
   state.shown=total?shown:0;
-  var KN={all:'전체',tile:'타일',object:'오브젝트',audio:'음악'},path=[KN[state.k]],qq=state.q.trim();if(state.s)path.push(state.s);if(state.tag)path.push('#'+state.tag);if(qq)path.push('“'+qq+'”');
+  var KN={all:'전체',tile:'타일',object:'오브젝트',audio:'음악'},path=[KN[state.k]],qq=state.q.trim();if(state.fav)path.unshift('★ 즐겨찾기');if(state.s)path.push(state.s);if(state.tag)path.push('#'+state.tag);if(qq)path.push('“'+qq+'”');
   $('#count').innerHTML=total+'개의 에셋 · 새로 나온 순'+(shown<total?' · '+shown+'개 보는 중':'')+' · <span class="path">'+path.map(esc).join(' <b>›</b> ')+'</span>';
   var left=total-shown,mb=$('#moreBox');mb.hidden=left<=0;
   if(left>0){$('#moreN').textContent='('+Math.min(PAGE,left)+'개 더)';$('#moreS').textContent='남은 에셋 '+left+'개'}
@@ -992,7 +1139,8 @@ var THEMES=[
   {tag:'긴장감',title:'긴장되는 음악',en:'Tense music',c1:'#b8403a',c2:'#2a1a3a'},
   {tag:'신비',title:'신비로운 음악',en:'Mystic music',c1:'#9a6ae0',c2:'#1f2a5a'},
   {tag:'피아노',title:'피아노',en:'Piano',c1:'#8a8fa8',c2:'#2a2a3a'},
-  {tag:'레트로',title:'레트로',en:'Retro',c1:'#e05a9a',c2:'#3a2a6a'}
+  {tag:'레트로',title:'레트로',en:'Retro',c1:'#e05a9a',c2:'#3a2a6a'},
+  {tag:'상호작용',title:'상호작용',en:'Interactive',c1:'#f5b90b',c2:'#4a3a8a'}
 ];
 function themeItems(t){return NEWEST.filter(function(i){return i.tags.indexOf(t)>=0})}
 function buildThemes(){
@@ -1019,7 +1167,7 @@ function renderThemes(){$$('#themes .th').forEach(function(b){b.setAttribute('ar
 $('#themes').addEventListener('click',function(e){
   var b=e.target.closest('.th');if(!b)return;
   var t=b.dataset.th,on=state.tag===t&&state.k==='all';
-  state.tag=on?null:t;state.k='all';state.s=null;state.q='';$('#q').value='';state.n=PAGE;
+  state.tag=on?null:t;state.k='all';state.s=null;state.q='';$('#q').value='';state.n=PAGE;state.fav=false;
   $$('.seg button').forEach(function(x){x.setAttribute('aria-pressed',x.dataset.k==='all')});
   render();
   if(!on)$('#count').scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});
@@ -1082,6 +1230,7 @@ var qt=0;$('#q').addEventListener('input',function(e){clearTimeout(qt);qt=setTim
 $('#grid').addEventListener('click',function(e){
   var p=e.target.closest('[data-play]');if(p){playToggle(byId[p.dataset.play]);return}
   var d=e.target.closest('[data-dl]');if(d){download(byId[d.dataset.dl]);return}
+  var f=e.target.closest('[data-fav]');if(f){toggleFav(byId[f.dataset.fav]);return}
   var o=e.target.closest('[data-open]');if(o)openDetail(byId[o.dataset.open]);
 });
 
@@ -1091,12 +1240,12 @@ function openDetail(it){
   lastFocus=document.activeElement;dItem=it;
   $('#dTitle').textContent=it.name;$('#dSub').textContent=it.en+' · '+KIND[catOf(it)];
   $('#dBody').innerHTML=it.kind==='audio'?detailAud(it):detailSpr(it);
-  $('#overlay').hidden=false;document.body.style.overflow='hidden';
+  $('#overlay').hidden=false;document.body.style.overflow='hidden';syncDFav();
   if(it.kind==='audio'){var cv=$('#dBody canvas[data-wave]');peaks(it,0,function(){waves()});waves();bindSeek(cv,it)}
   else bindSpr(it);
   $('#dClose').focus();
 }
-function closeDetail(){$('#overlay').hidden=true;document.body.style.overflow='';$('#dBody').innerHTML='';dP=null;dItem=null;if(lastFocus&&lastFocus.focus)lastFocus.focus()}
+function closeDetail(){$('#overlay').hidden=true;document.body.style.overflow=libOpen()?'hidden':'';$('#dBody').innerHTML='';dP=null;dItem=null;if(lastFocus&&lastFocus.focus)lastFocus.focus()}
 $('#dClose').addEventListener('click',closeDetail);$('#scrim').addEventListener('click',closeDetail);
 addEventListener('keydown',function(e){if($('#overlay').hidden)return;if(e.key==='Escape')closeDetail();
   if(e.key==='Tab'){var f=$$('#sheet button,#sheet input,#sheet a[href]').filter(function(x){return x.offsetParent});if(!f.length)return;var a=f[0],z=f[f.length-1];
@@ -1180,6 +1329,102 @@ function scene(dt){
 
 /* ---------- 알림 ---------- */
 var tt=0;function toast(m){var el=$('#toast');el.textContent=m;el.classList.add('on');clearTimeout(tt);tt=setTimeout(function(){el.classList.remove('on')},2600)}
+
+/* ---------- 내 보관함: 즐겨찾기 · 불러온 기록 (보기 · 부분 삭제 · 전체 삭제) ---------- */
+var lib={tab:'fav',sel:{},confirm:false},libFocus=null;
+function libOpen(){return!$('#libOverlay').hidden}
+function syncCounts(){var n=FAVS.length,b=$('#libN');b.textContent=n;b.hidden=!n;$('#nFav').textContent=n}
+function fmtWhen(t){
+  var d=new Date(t),n=new Date(),hm=d.toLocaleTimeString('ko-KR',{hour:'numeric',minute:'2-digit'});
+  if(d.toDateString()===n.toDateString())return'오늘 '+hm;
+  var y=new Date(n);y.setDate(n.getDate()-1);if(d.toDateString()===y.toDateString())return'어제 '+hm;
+  return d.toLocaleDateString('ko-KR',d.getFullYear()===n.getFullYear()?{month:'long',day:'numeric'}:{year:'numeric',month:'long',day:'numeric'})+' '+hm;
+}
+function libRows(){
+  var rows=lib.tab==='fav'?FAVS.slice().reverse().map(function(id){return{key:id,it:byId[id],when:''}}):HIST.map(function(h){return{key:h.k,it:byId[h.id],when:fmtWhen(h.t)}});
+  return rows.map(function(r){var c=KIND[catOf(r.it)]+' · '+subOf(r.it);r.sub=r.when?r.when+' · '+c:c;return r});
+}
+function rowHtml(r){
+  var it=r.it,on=!!lib.sel[r.key],fav=lib.tab==='fav';
+  return'<li class="row'+(on?' sel':'')+'"><input type="checkbox" data-sel="'+esc(r.key)+'"'+(on?' checked':'')+' aria-label="'+esc(it.name)+' 선택">'+
+    '<button type="button" class="lib-open" data-open="'+it.id+'" aria-label="'+esc(it.name)+' 자세히 보기"><span class="lib-th">'+(it.kind==='audio'?IC.aud:'<canvas class="pix" data-lt="'+it.id+'"></canvas>')+'</span>'+
+    '<span class="lib-tx"><b>'+esc(it.name)+'</b><span>'+esc(r.sub)+'</span></span></button>'+
+    '<span class="lib-act"><button type="button" class="ib" data-eng="'+it.id+'"'+(linked||ENGINE?'':' hidden')+' aria-label="'+esc(it.name)+' 엔진에 불러오기" title="엔진에 불러오기">'+IC.eng+'<span class="lb">'+(fav?'불러오기':'다시 불러오기')+'</span></button>'+
+    '<button type="button" class="ib del" data-del="'+esc(r.key)+'" aria-label="'+esc(it.name)+(fav?' 즐겨찾기에서 삭제':' 기록 삭제')+'" title="삭제">'+IC.x+'</button></span></li>';
+}
+function emptyLib(fav){
+  return fav?'<li class="lib-empty"><strong>아직 즐겨찾기한 에셋이 없어요</strong>카드나 자세히 보기 창의 별(★)을 누르면 여기에 모여요.</li>'
+    :'<li class="lib-empty"><strong>불러온 기록이 없어요</strong>Thaniya Engine에서 연 스토어에서 「불러오기」를 누르면 여기에 남아요.</li>';
+}
+function syncLibBar(){
+  var n=libRows().length,sc=Object.keys(lib.sel).length,all=$('#libAll');
+  all.checked=n>0&&sc===n;all.indeterminate=sc>0&&sc<n;all.disabled=!n;
+  $('#libDelSel').disabled=!sc;$('#libDelSelN').textContent=sc?' ('+sc+')':'';$('#libDelAll').disabled=!n;
+}
+function renderLib(){
+  var rows=libRows(),fav=lib.tab==='fav',keys={};
+  rows.forEach(function(r){keys[r.key]=1});
+  Object.keys(lib.sel).forEach(function(k){if(!keys[k])delete lib.sel[k]});
+  $('#libTabFav i').textContent=FAVS.length;$('#libTabHist i').textContent=HIST.length;
+  $('#libTabFav').setAttribute('aria-pressed',fav);$('#libTabHist').setAttribute('aria-pressed',!fav);
+  if(!rows.length)lib.confirm=false;
+  $('#libConfirm').hidden=!lib.confirm;
+  if(lib.confirm)$('#libConfirmT').textContent=fav?'즐겨찾기 '+rows.length+'개를 모두 삭제할까요? 즐겨찾기만 해제되고 에셋은 그대로예요.':'불러온 기록 '+rows.length+'개를 모두 삭제할까요? 에셋과, 이미 엔진 프로젝트에 넣은 에셋은 그대로예요.';
+  $('#libList').innerHTML=rows.length?rows.map(rowHtml).join(''):emptyLib(fav);
+  $$('#libList canvas[data-lt]').forEach(function(cv){var it=byId[cv.dataset.lt],sl=it.slices[0];ready(img(it),function(){drawSlice(cv,it,sl,Math.max(1,Math.floor(48/Math.max(sl.w,sl.h))))})});
+  syncLibBar();
+}
+function openLib(){
+  libFocus=document.activeElement;lib.sel={};lib.confirm=false;
+  $('#libSub').textContent=CAN_STORE?'즐겨찾기와 불러온 기록 · 이 브라우저에 저장돼요':'이 브라우저는 저장을 막고 있어서, 페이지를 닫으면 사라져요';
+  $('#libOverlay').hidden=false;document.body.style.overflow='hidden';renderLib();$('#libClose').focus();
+}
+function closeLib(){$('#libOverlay').hidden=true;document.body.style.overflow='';$('#libList').innerHTML='';if(libFocus&&libFocus.focus)libFocus.focus()}
+function setTab(t){lib.tab=t;lib.sel={};lib.confirm=false;renderLib()}
+function deleteKeys(keys){
+  var set={};keys.forEach(function(k){set[k]=1});
+  if(lib.tab==='fav'){FAVS=FAVS.filter(function(id){return!set[id]});reindexFav();saveFav()}
+  else{HIST=HIST.filter(function(h){return!set[h.k]});saveHist()}
+  lib.sel={};lib.confirm=false;
+  toast(keys.length+'개를 삭제했어요');refreshStore();
+}
+function deleteAll(){
+  var fav=lib.tab==='fav',n=fav?FAVS.length:HIST.length;
+  if(fav){FAVS=[];reindexFav();saveFav()}else{HIST=[];saveHist()}
+  lib.sel={};lib.confirm=false;
+  toast((fav?'즐겨찾기':'불러온 기록')+' '+n+'개를 모두 삭제했어요');refreshStore();$('#libClose').focus();
+}
+$('#libBtn').addEventListener('click',openLib);
+$('#libClose').addEventListener('click',closeLib);$('#libScrim').addEventListener('click',closeLib);
+$('#libTabFav').addEventListener('click',function(){setTab('fav')});
+$('#libTabHist').addEventListener('click',function(){setTab('hist')});
+$('#libAll').addEventListener('change',function(e){lib.sel={};if(e.target.checked)libRows().forEach(function(r){lib.sel[r.key]=1});renderLib()});
+$('#libList').addEventListener('change',function(e){
+  var c=e.target.closest('[data-sel]');if(!c)return;
+  if(c.checked)lib.sel[c.dataset.sel]=1;else delete lib.sel[c.dataset.sel];
+  c.closest('.row').classList.toggle('sel',c.checked);syncLibBar();
+});
+$('#libList').addEventListener('click',function(e){
+  var d=e.target.closest('[data-del]');if(d){deleteKeys([d.dataset.del]);return}
+  var g=e.target.closest('[data-eng]');if(g){sendEngine(byId[g.dataset.eng]);return}
+  var o=e.target.closest('[data-open]');if(o)openDetail(byId[o.dataset.open]);
+});
+$('#libDelSel').addEventListener('click',function(){var ks=Object.keys(lib.sel);if(ks.length)deleteKeys(ks)});
+$('#libDelAll').addEventListener('click',function(){lib.confirm=true;renderLib();$('#libConfirmNo').focus()});
+$('#libConfirmNo').addEventListener('click',function(){lib.confirm=false;renderLib();$('#libDelAll').focus()});
+$('#libConfirmYes').addEventListener('click',deleteAll);
+$('#dFav').addEventListener('click',function(){if(dItem)toggleFav(dItem)});
+$('#favF').addEventListener('click',function(){state.fav=!state.fav;state.n=PAGE;render();if(state.fav)$('#count').scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'})});
+/* 보관함이 열려 있고 자세히 보기가 닫혀 있을 때만: Esc · Tab (자세히 보기가 위에 열려 있으면 그쪽이 먼저) */
+addEventListener('keydown',function(e){
+  if(!libOpen()||!$('#overlay').hidden)return;
+  if(e.key==='Escape'){e.preventDefault();if(lib.confirm){lib.confirm=false;renderLib()}else closeLib();return}
+  if(e.key==='Tab'){var f=$$('#libSheet button,#libSheet input').filter(function(x){return x.offsetParent&&!x.disabled});if(!f.length)return;var a=f[0],z=f[f.length-1];
+    if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}
+},true);
+/* 다른 탭에서 바꾼 즐겨찾기 · 기록도 바로 반영 */
+addEventListener('storage',function(e){if(e.key!==LS_FAV&&e.key!==LS_HIST)return;loadStore();refreshStore()});
+syncCounts();
 
 addEventListener('resize',function(){players.forEach(draw);waves()});
 render();requestAnimationFrame(tick);
