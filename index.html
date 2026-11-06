@@ -876,7 +876,7 @@ function post(msg){try{ENGINE.postMessage(msg,'*')}catch(e){}}
 if(ENGINE)post({type:'thaniya-store:hello',version:1});
 addEventListener('message',function(e){
   var d=e.data;if(!d||typeof d!=='object')return;
-  if(d.type==='thaniya-engine:hello'){linked=true;$('#link').hidden=false;$$('[data-eng]').forEach(function(b){b.hidden=false})}
+  if(d.type==='thaniya-engine:hello'){linked=true;$('#link').hidden=false;$$('[data-eng]').forEach(function(b){b.hidden=false});if(typeof syncDl==='function')syncDl()}
   if(d.type==='thaniya-engine:ack'){var wk=d.rid||d.id;if(waitAck[wk]){clearTimeout(waitAck[wk]);delete waitAck[wk];toast(d.msg||'엔진 프로젝트에 넣었어요')}}
 });
 function engineAsset(it){
@@ -1114,7 +1114,17 @@ function cardOf(it){return it.kind==='audio'?cardAud(it):cardSpr(it)}
 function bindCards(){
   $$('#grid canvas[data-spr]:not([data-b])').forEach(function(cv){cv.dataset.b='1';var it=byId[cv.dataset.spr];animate(cv,it,function(s){var box=Math.min(150,Math.max(96,cv.parentNode.clientWidth*.5));return Math.max(1,Math.floor(box/Math.max(s.w,s.h)))});if(io)io.observe(cv)});
   $$('#grid canvas[data-wave]:not([data-b])').forEach(function(cv){cv.dataset.b='1';var it=byId[cv.dataset.wave];drawWave(cv,it,cur===it?0:null);peaks(it,0,function(){waves()})});
-  syncBtns();
+  syncBtns();syncDl();
+}
+/* 엔진과 연결돼 있으면 목록의 받기 버튼은 파일 다운로드 대신 「불러오기」로 이어져요 */
+function syncDl(){
+  var eng=!!(linked||ENGINE);
+  $$('#grid .dl[data-dl]').forEach(function(b){
+    var it=byId[b.dataset.dl];
+    b.innerHTML=eng?IC.eng:IC.dl;
+    b.title=eng?'엔진에 불러오기':(it.kind==='audio'?'MP3 받기':'PNG 받기');
+    b.setAttribute('aria-label',it.name+(eng?' 엔진에 불러오기':(it.kind==='audio'?' MP3 받기':' PNG 받기')));
+  });
 }
 /* append=true 이면 이미 보이는 카드는 그대로 두고 새로 나올 카드만 뒤에 붙임 (더보기) */
 function render(append){
@@ -1255,7 +1265,7 @@ $('#chips').addEventListener('click',function(e){var mb=e.target.closest('[data-
 var qt=0;$('#q').addEventListener('input',function(e){clearTimeout(qt);qt=setTimeout(function(){state.q=e.target.value;state.n=PAGE;render()},120)});
 $('#grid').addEventListener('click',function(e){
   var p=e.target.closest('[data-play]');if(p){playToggle(byId[p.dataset.play]);return}
-  var d=e.target.closest('[data-dl]');if(d){download(byId[d.dataset.dl]);return}
+  var d=e.target.closest('[data-dl]');if(d){var di=byId[d.dataset.dl];if(linked||ENGINE)sendEngine(di);else download(di);return}
   var f=e.target.closest('[data-fav]');if(f){toggleFav(byId[f.dataset.fav]);return}
   var o=e.target.closest('[data-open]');if(o)openDetail(byId[o.dataset.open]);
 });
